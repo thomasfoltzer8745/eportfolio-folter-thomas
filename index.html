@@ -3,18 +3,492 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon portfolio</title>
+    <title>E-Portfolio | Élève-Ingénieur Toulouse INP-ENSEEIHT</title>
+    <!-- FontAwesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS RESET & VARIABLES */
+        :root {
+            --primary-color: #00529b; /* Bleu N7 */
+            --secondary-color: #003366;
+            --accent-color: #e6007e; /* Rose Soft Skills Center */
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #212529;
+            --text-muted: #6c757d;
+            --border-radius: 8px;
+            --shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* HEADER & NAVIGATION */
+        header {
+            background-color: #ffffff;
+            border-bottom: 3px solid var(--primary-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo-title h1 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .logo-title span {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            display: block;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover, nav a.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* MAIN CONTENT AREA */
+        container {
+            display: block;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* CARDS & SECTIONS */
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .card h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 0.5rem;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .profile-img-placeholder {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-color: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--text-muted);
+            margin: 0 auto;
+            border: 4px solid var(--primary-color);
+        }
+
+        /* BUTTONS */
+        .btn {
+            display: inline-block;
+            padding: 0.6rem 1.2rem;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            margin-right: 0.5rem;
+            margin-top: 0.5rem;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .btn-accent {
+            background-color: var(--accent-color);
+        }
+
+        .btn-accent:hover {
+            background-color: #c4006b;
+        }
+
+        /* SUB-TABS (CAREER & OTHERS) */
+        .sub-nav {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 0.5rem;
+        }
+
+        .sub-nav button {
+            background: none;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-muted);
+            border-radius: var(--border-radius);
+        }
+
+        .sub-nav button.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .sub-content {
+            display: none;
+        }
+
+        .sub-content.active {
+            display: block;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: #ffffff;
+            border-top: 1px solid #e9ecef;
+            color: var(--text-muted);
+            margin-top: 3rem;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
-
 <body>
-    <h1>Bienvenue sur mon portfolio</h1>
 
-    <p>Bonjour, je m'appelle Thomas.</p>
+    <!-- HEADER & NAVIGATION (6 TAB STRUCTURE) -->
+    <header>
+        <div class="header-container">
+            <div class="logo-title">
+                <h1>Prénom Nom</h1>
+                <span>Élève-Ingénieur @ Toulouse INP-ENSEEIHT</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="nav-link active" onclick="switchTab(event, 'welcome')">Welcome</a></li>
+                    <li><a href="#" class="nav-link" onclick="switchTab(event, 'engineering')">Engineering Course</a></li>
+                    <li><a href="#" class="nav-link" onclick="switchTab(event, 'mobility')">International Mobility</a></li>
+                    <li><a href="#" class="nav-link" onclick="switchTab(event, 'sustainability')">Sustainability & Civic</a></li>
+                    <li><a href="#" class="nav-link" onclick="switchTab(event, 'sport')">Sport & Activities</a></li>
+                    <li><a href="#" class="nav-link" onclick="switchTab(event, 'career')">Career Development</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-    <h2>À propos de moi</h2>
-    <p>Je suis étudiant et voici mon portfolio.</p>
+    <container>
 
-    <h2>Mes projets</h2>
-    <p>Mes différents projets seront présentés ici.</p>
+        <!-- 1. WELCOME TAB -->
+        <section id="welcome" class="tab-content active">
+            <div class="card grid-2">
+                <div class="profile-img-placeholder">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                <div>
+                    <h2>Bienvenue sur mon E-Portfolio</h2>
+                    <p><strong>Note d'introduction :</strong> [Ajoute ici ton mot de bienvenue, ta présentation personnelle, ton département à l'N7 (ex: SN, 3EA, MFEE) et tes ambitions professionnelles].</p>
+                    <br>
+                    <p>Ce portfolio retrace mon parcours d'ingénieur sur 3 ans, mes projets techniques, mes compétences clés ainsi que mes engagements personnels.</p>
+                    <br>
+                    <div>
+                        <a href="https://linkedin.com" target="_blank" class="btn"><i class="fa-brands fa-linkedin"></i> Mon LinkedIn</a>
+                        <a href="#career" onclick="switchTab(null, 'career')" class="btn btn-accent"><i class="fa-solid fa-file-pdf"></i> Voir mon CV & Elevator Pitch</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Aperçu des Projets Récents</h2>
+                <div class="grid-3">
+                    <div style="border: 1px solid #ddd; padding: 1rem; border-radius: var(--border-radius);">
+                        <h3>Projet 1 (En cours)</h3>
+                        <p>Description rapide du projet d'ingénierie ou projet de spécialité.</p>
+                    </div>
+                    <div style="border: 1px solid #ddd; padding: 1rem; border-radius: var(--border-radius);">
+                        <h3>Projet 2</h3>
+                        <p>Description rapide de la réalisation ou activité associative.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. ENGINEERING COURSE TAB -->
+        <section id="engineering" class="tab-content">
+            <div class="card">
+                <h2>Engineering Course</h2>
+                <p>Présentation de ma formation théorique, projets académiques et compétences techniques développées à Toulouse INP-N7.</p>
+            </div>
+            <div class="card">
+                <h3>Projets & Productions Académiques</h3>
+                <div class="grid-3" style="margin-top: 1rem;">
+                    <div style="border:1px solid #ddd; padding:1rem; border-radius:var(--border-radius);">
+                        <h4>[S5/S6] Projet de Programmation / Conception</h4>
+                        <p><strong>Contexte (STAR) :</strong> Problématique à résoudre.</p>
+                        <p><strong>Rôle & Méthodes :</strong> Technologies utilisées, travail d'équipe.</p>
+                        <p><strong>Résultats :</strong> Code, rapport, compétences acquises.</p>
+                    </div>
+                    <div style="border:1px solid #ddd; padding:1rem; border-radius:var(--border-radius);">
+                        <h4>[S7/S8] Projet d'Ingénierie de Spécialité</h4>
+                        <p><strong>Description :</strong> [À remplir ultérieurement].</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. INTERNATIONAL MOBILITY TAB -->
+        <section id="mobility" class="tab-content">
+            <div class="card">
+                <h2>International Mobility</h2>
+                <p>Validation de la mobilité internationale obligatoire (17 semaines requises pour le diplôme S9).</p>
+            </div>
+            <div class="grid-3">
+                <div class="card">
+                    <h3>LV2 & Projets Linguistiques</h3>
+                    <p>Niveau d'anglais visé : B2+ / C1.</p>
+                    <p>Détails des cours de langues et certifications (TOEIC/IELTS).</p>
+                </div>
+                <div class="card">
+                    <h3>Projets de Mobilité Internationale</h3>
+                    <p>Détails sur les échanges académiques (Erasmus, double diplôme) ou stages à l'étranger.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. SUSTAINABILITY & CIVIC ENGAGEMENT TAB -->
+        <section id="sustainability" class="tab-content">
+            <div class="card">
+                <h2>Sustainability & Civic Engagement</h2>
+                <p>Validation des 40h d'engagement citoyen / développement durable requises au S9.</p>
+            </div>
+            <div class="card">
+                <h3>Actions & Impact</h3>
+                <ul>
+                    <li><strong>Projet citoyen / Associatif :</strong> [Description de l'action]</li>
+                    <li><strong>Sensibilisation DD&RS :</strong> Fresque du Climat, projets éco-responsables à l'N7.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 5. SPORT & OTHER ACTIVITIES TAB -->
+        <section id="sport" class="tab-content">
+            <div class="card">
+                <h2>Sport & Other Activities</h2>
+                <p>Compétences transversales (Soft Skills) développées via le sport, les arts, ou l'engagement associatif à l'N7.</p>
+            </div>
+            <div class="grid-3">
+                <div class="card">
+                    <h3>Pratique Sportive</h3>
+                    <p>Sports pratiqués, compétitions BDS, travail d'équipe et esprit de dépassement.</p>
+                </div>
+                <div class="card">
+                    <h3>Loisirs & Centres d'Intérêt</h3>
+                    <p>Musique, projets personnels, bénévolat, passions.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. CAREER DEVELOPMENT TAB (LIVRABLES EVALUÉS MARKETING L3-S5) -->
+        <section id="career" class="tab-content">
+            <div class="card">
+                <h2>Career Development (Projet Professionnel)</h2>
+                <p>Section dédiée à l'insertion professionnelle et aux livrables évalués du module Marketing / CAM L3.</p>
+                
+                <!-- Sous-navigation pour organiser les livrables -->
+                <div class="sub-nav">
+                    <button class="sub-link active" onclick="switchSubTab(event, 'sub-cv')">CV & LinkedIn</button>
+                    <button class="sub-link" onclick="switchSubTab(event, 'sub-pitch')">Elevator Pitch (UVP Video)</button>
+                    <button class="sub-link" onclick="switchSubTab(event, 'sub-rolemodels')">Role Models & Mobility</button>
+                    <button class="sub-link" onclick="switchSubTab(event, 'sub-internships')">Stages & PEP</button>
+                </div>
+
+                <!-- SUB 1: CV & LINKEDIN -->
+                <div id="sub-cv" class="sub-content active">
+                    <h3>Curriculum Vitae & Profils</h3>
+                    <div class="grid-2" style="margin-top:1rem;">
+                        <div>
+                            <h4>CVs Téléchargeables</h4>
+                            <br>
+                            <a href="#" class="btn"><i class="fa-solid fa-download"></i> Download CV (English)</a>
+                            <a href="#" class="btn"><i class="fa-solid fa-download"></i> Télécharger CV (Français)</a>
+                        </div>
+                        <div>
+                            <h4>Réseaux Professionnels</h4>
+                            <p>Lien direct vers mes profils à jour :</p>
+                            <br>
+                            <a href="https://linkedin.com" target="_blank" class="btn"><i class="fa-brands fa-linkedin"></i> Profil LinkedIn (FR / EN)</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SUB 2: ELEVATOR PITCH -->
+                <div id="sub-pitch" class="sub-content">
+                    <h3>Elevator Pitch Video (Unique Value Proposition - UVP)</h3>
+                    <p>Vidéo de 2 à 3 minutes en anglais présentant ma proposition de valeur unique.</p>
+                    <br>
+                    <div style="background:#000; color:#fff; height:250px; display:flex; align-items:center; justify-content:center; border-radius:var(--border-radius);">
+                        <p><i class="fa-solid fa-play-circle" style="font-size:2rem;"></i><br>[Intégrer ici le lien iframe ou la vidéo MP4 du Pitch UVP]</p>
+                    </div>
+                    <br>
+                    <p><strong>Structure :</strong> Present + Past + Future</p>
+                </div>
+
+                <!-- SUB 3: ROLE MODELS & MOBILITY -->
+                <div id="sub-rolemodels" class="sub-content">
+                    <h3>Profils Modèles & Projets de Mobilité</h3>
+                    <div class="grid-2">
+                        <div>
+                            <h4>3 Role Models Analysés (My Job Glasses / Alumni N7)</h4>
+                            <ul>
+                                <li><strong>Modèle 1 :</strong> [Ingénieur / Post - Analyse]</li>
+                                <li><strong>Modèle 2 :</strong> [Ingénieur / Post - Analyse]</li>
+                                <li><strong>Modèle 3 :</strong> [Ingénieur / Post - Analyse]</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4>3 Projets de Mobilité Internationale Alignés</h4>
+                            <ul>
+                                <li><strong>Projet 1 :</strong> [Destination / Entreprise / Université]</li>
+                                <li><strong>Projet 2 :</strong> [Destination / Entreprise / Université]</li>
+                                <li><strong>Projet 3 :</strong> [Destination / Entreprise / Université]</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SUB 4: STAGES -->
+                <div id="sub-internships" class="sub-content">
+                    <h3>Stages & Projet d'Exploration Professionnelle (PEP)</h3>
+                    <p>Historique des stages et suivis d'insertion (Stage S6, Stage S8, PEP).</p>
+                </div>
+
+            </div>
+        </section>
+
+    </container>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 - E-Portfolio de Élève-Ingénieur | Toulouse INP-ENSEEIHT</p>
+        <p><small>Conforme à la structure recommandée par la direction des études de l'N7</small></p>
+    </footer>
+
+    <!-- JS POUR LA NAVIGATION PAR ONGLETS -->
+    <script>
+        // Gestion des 6 onglets principaux
+        function switchTab(event, tabId) {
+            if (event) event.preventDefault();
+            
+            // Masquer tous les onglets
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            // Désactiver tous les liens du menu
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => link.classList.remove('active'));
+
+            // Activer l'onglet sélectionné
+            document.getElementById(tabId).classList.add('active');
+            
+            // Mettre en surbrillance le lien cliqué
+            if (event) {
+                event.currentTarget.classList.add('active');
+            } else {
+                // Si appelé programmatiquement
+                const activeLink = Array.from(navLinks).find(link => link.getAttribute('onclick').includes(tabId));
+                if(activeLink) activeLink.classList.add('active');
+            }
+        }
+
+        // Gestion des sous-onglets dans Career Development
+        function switchSubTab(event, subTabId) {
+            event.preventDefault();
+            
+            const subContents = document.querySelectorAll('.sub-content');
+            subContents.forEach(content => content.classList.remove('active'));
+
+            const subLinks = document.querySelectorAll('.sub-link');
+            subLinks.forEach(link => link.classList.remove('active'));
+
+            document.getElementById(subTabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+    </script>
 </body>
 </html>

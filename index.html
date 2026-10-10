@@ -3,434 +3,587 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Thomas Foltzer | E-Portfolio – Toulouse INP-ENSEEIHT</title>
-<meta name="description" content="E-Portfolio de Thomas Foltzer, élève-ingénieur à Toulouse INP-ENSEEIHT : parcours, projets, mobilité internationale, engagement et projet professionnel.">
+<title>Thomas Foltzer | E-Portfolio Aérospatial – ENSEEIHT</title>
+<meta name="description" content="E-Portfolio de Thomas Foltzer, élève-ingénieur MFEE à Toulouse INP-ENSEEIHT : aéro, spatial, thermique et modélisation numérique.">
+<meta name="theme-color" content="#03060f">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
-:root {
-  --navy: #0b2545;
-  --navy-2: #13315c;
-  --blue: #1f5fa8;
-  --blue-soft: #e8f0fa;
-  --accent: #c8963e;
-  --bg: #f5f7fa;
-  --card: #ffffff;
-  --text: #1b2430;
-  --muted: #5d6b7e;
-  --line: #e1e6ee;
-  --radius: 12px;
-  --shadow: 0 1px 2px rgba(11,37,69,.06), 0 8px 24px rgba(11,37,69,.06);
+:root{
+  --bg:#03060f; --bg2:#070d1f; --panel:rgba(14,22,45,.55); --line:rgba(120,170,255,.18);
+  --cyan:#4de1ff; --blue:#3b82ff; --plasma:#ff7a3d; --gold:#ffc46b; --violet:#8b7bff;
+  --text:#dfe8fa; --muted:#8a9bbd;
+  --display:'Orbitron',system-ui,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
 }
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body {
-  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.65;
-  -webkit-font-smoothing: antialiased;
-}
-h1, h2, h3, h4 { line-height: 1.25; color: var(--navy); }
-h1, h2 { font-family: 'Source Serif 4', Georgia, serif; }
-a { color: var(--blue); }
-:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:var(--cyan);text-decoration:none}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:6px}
+::selection{background:var(--plasma);color:#000}
+#stars{position:fixed;inset:0;z-index:-2;width:100%;height:100%}
+body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(1200px 600px at 80% -10%,rgba(59,130,255,.18),transparent 60%),
+             radial-gradient(900px 500px at -10% 40%,rgba(139,123,255,.12),transparent 60%),
+             radial-gradient(900px 500px at 110% 90%,rgba(255,122,61,.10),transparent 60%)}
 
-/* HEADER */
-header {
-  background: var(--navy);
-  position: sticky; top: 0; z-index: 100;
-  border-bottom: 3px solid var(--accent);
-}
-.header-inner {
-  max-width: 1180px; margin: 0 auto; padding: .85rem 1.5rem;
-  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
-}
-.brand { color: #fff; text-decoration: none; display: flex; flex-direction: column; }
-.brand strong { font-family: 'Source Serif 4', Georgia, serif; font-size: 1.25rem; letter-spacing: .01em; }
-.brand span { font-size: .78rem; color: #aebfd6; letter-spacing: .04em; text-transform: uppercase; }
-nav ul { display: flex; list-style: none; gap: .15rem; }
-nav a {
-  color: #d5e0ef; text-decoration: none; font-size: .88rem; font-weight: 500;
-  padding: .5rem .8rem; border-radius: 8px; display: block; transition: background .2s, color .2s;
-}
-nav a:hover { background: rgba(255,255,255,.1); color: #fff; }
-nav a.active { background: #fff; color: var(--navy); font-weight: 600; }
-.menu-btn {
-  display: none; background: none; border: 1px solid rgba(255,255,255,.35); color: #fff;
-  font-size: 1.1rem; padding: .4rem .7rem; border-radius: 8px; cursor: pointer;
-}
+/* NAV */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;
+  padding:.8rem 2rem;background:linear-gradient(180deg,rgba(3,6,15,.85),rgba(3,6,15,.35));backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.logo{font-family:var(--display);font-weight:900;letter-spacing:.12em;color:#fff;font-size:1.05rem;display:flex;align-items:center;gap:.6rem}
+.logo i{width:30px;height:30px;border:1px solid var(--cyan);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-style:normal;font-size:.7rem;color:var(--cyan);box-shadow:0 0 14px rgba(77,225,255,.5)}
+.topbar nav ul{display:flex;gap:.2rem;list-style:none}
+.topbar nav a{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:.5rem .8rem;border-radius:6px;transition:.25s;display:block}
+.topbar nav a:hover{color:#fff;background:rgba(255,255,255,.06)}
+.topbar nav a.active{color:var(--cyan);background:rgba(77,225,255,.08);box-shadow:inset 0 -2px 0 var(--cyan)}
+.burger{display:none;background:none;border:1px solid var(--line);color:#fff;border-radius:8px;padding:.4rem .7rem;cursor:pointer}
+.progress{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--cyan),var(--plasma));z-index:60;box-shadow:0 0 12px var(--cyan)}
 
 /* LAYOUT */
-main { max-width: 1180px; margin: 0 auto; padding: 2.5rem 1.5rem 1rem; }
-.tab { display: none; animation: rise .35s ease; }
-.tab.active { display: block; }
-@keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+section{position:relative;padding:7rem 2rem 4rem;max-width:1200px;margin:0 auto}
+.sec-head{margin-bottom:3rem}
+.sec-tag{font-family:var(--mono);font-size:.75rem;letter-spacing:.25em;color:var(--plasma);text-transform:uppercase;display:flex;align-items:center;gap:.8rem}
+.sec-tag::before{content:'';width:40px;height:1px;background:var(--plasma)}
+.sec-head h2{font-family:var(--display);font-weight:700;font-size:clamp(1.7rem,4vw,2.8rem);color:#fff;margin:.6rem 0;letter-spacing:.03em;
+  background:linear-gradient(90deg,#fff,#a9c6ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sec-head p{color:var(--muted);max-width:70ch}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
 
-.page-title { margin-bottom: 1.75rem; }
-.page-title h2 { font-size: 2rem; }
-.page-title p { color: var(--muted); max-width: 70ch; margin-top: .4rem; }
-.page-title::after { content: ''; display: block; width: 56px; height: 3px; background: var(--accent); margin-top: 1rem; }
-
-.card {
-  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
-  padding: 1.75rem; box-shadow: var(--shadow); margin-bottom: 1.5rem;
-}
-.card h3 { font-size: 1.15rem; margin-bottom: .6rem; display: flex; align-items: center; gap: .6rem; }
-.card h3 i { color: var(--blue); font-size: 1rem; background: var(--blue-soft); width: 34px; height: 34px; border-radius: 9px; display: inline-flex; align-items: center; justify-content: center; flex: none; }
-.card h4 { font-size: 1rem; margin-bottom: .4rem; }
-.card p + p { margin-top: .6rem; }
-.card ul { padding-left: 1.2rem; }
-.card li + li { margin-top: .5rem; }
-.muted { color: var(--muted); }
-
-.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 1.5rem; }
-.grid-2 > .card, .grid-3 > .card { margin-bottom: 0; }
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem}
+.card{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:1.8rem;backdrop-filter:blur(10px);overflow:hidden;transition:transform .3s,border-color .3s}
+.card::before{content:'';position:absolute;inset:0;background:radial-gradient(400px circle at var(--mx,50%) var(--my,0%),rgba(77,225,255,.12),transparent 45%);opacity:0;transition:.3s;pointer-events:none}
+.card:hover{border-color:rgba(77,225,255,.45);transform:translateY(-3px)}
+.card:hover::before{opacity:1}
+.card h3{font-family:var(--display);font-size:1rem;letter-spacing:.06em;color:#fff;margin-bottom:.7rem;display:flex;align-items:center;gap:.7rem}
+.card h3 i{color:var(--cyan);width:36px;height:36px;border:1px solid var(--line);border-radius:10px;display:inline-flex;align-items:center;justify-content:center;font-size:.9rem;background:rgba(77,225,255,.07);flex:none}
+.card p+p{margin-top:.7rem}
+.card ul{padding-left:1.1rem}.card li+li{margin-top:.5rem}
+.todo{color:var(--muted);font-style:italic;font-size:.92rem}
+.chip{display:inline-block;font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;padding:.25rem .7rem;border:1px solid var(--line);border-radius:999px;color:var(--cyan);margin-bottom:.8rem}
+.chip.hot{color:var(--plasma);border-color:rgba(255,122,61,.4)}
+.btn{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;padding:.85rem 1.4rem;border-radius:10px;border:1px solid var(--cyan);color:var(--cyan);background:rgba(77,225,255,.06);transition:.25s;cursor:pointer;margin:.3rem .5rem .3rem 0}
+.btn:hover{background:var(--cyan);color:#001018;box-shadow:0 0 26px rgba(77,225,255,.55);transform:translateY(-2px)}
+.btn.plasma{border-color:var(--plasma);color:var(--plasma);background:rgba(255,122,61,.07)}
+.btn.plasma:hover{background:var(--plasma);color:#1a0800;box-shadow:0 0 26px rgba(255,122,61,.55)}
 
 /* HERO */
-.hero {
-  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%);
-  color: #fff; border-radius: 16px; padding: 3rem; margin-bottom: 1.75rem;
-  display: grid; grid-template-columns: auto 1fr; gap: 2.5rem; align-items: center;
-  box-shadow: var(--shadow); position: relative; overflow: hidden;
-}
-.hero::after {
-  content: ''; position: absolute; right: -80px; top: -80px; width: 280px; height: 280px;
-  border-radius: 50%; border: 40px solid rgba(200,150,62,.12);
-}
-.avatar {
-  width: 168px; height: 168px; border-radius: 50%; background: rgba(255,255,255,.08);
-  border: 3px solid var(--accent); display: flex; align-items: center; justify-content: center;
-  font-family: 'Source Serif 4', Georgia, serif; font-size: 3.2rem; font-weight: 700; color: #fff;
-  overflow: hidden; flex: none;
-}
-.avatar img { width: 100%; height: 100%; object-fit: cover; }
-.hero .eyebrow { color: var(--accent); font-size: .8rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
-.hero h1 { color: #fff; font-size: 2.4rem; margin: .35rem 0 .8rem; }
-.hero p { color: #d5e0ef; max-width: 62ch; }
-.hero .actions { margin-top: 1.5rem; position: relative; z-index: 1; }
+#welcome{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:8rem}
+.hero-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:3rem;align-items:center}
+.status{font-family:var(--mono);font-size:.75rem;letter-spacing:.2em;color:var(--cyan);display:flex;align-items:center;gap:.7rem;text-transform:uppercase}
+.status b{width:8px;height:8px;border-radius:50%;background:#3dff9a;box-shadow:0 0 12px #3dff9a;animation:blink 1.6s infinite}
+@keyframes blink{50%{opacity:.25}}
+h1{font-family:var(--display);font-weight:900;font-size:clamp(2.6rem,8vw,5.8rem);line-height:1.02;margin:1rem 0 .6rem;letter-spacing:.02em;color:#fff}
+h1 span{display:block;background:linear-gradient(95deg,var(--cyan),var(--blue) 45%,var(--plasma));-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 22px rgba(77,225,255,.25))}
+.role{font-family:var(--mono);font-size:clamp(.9rem,2vw,1.1rem);color:var(--gold);min-height:1.8em}
+.role::after{content:'▍';animation:blink 1s infinite;color:var(--cyan)}
+.lead{margin:1.4rem 0 2rem;color:#b9c8e6;max-width:60ch;font-size:1.05rem}
+.portrait{position:relative;aspect-ratio:1;max-width:420px;margin:auto;width:100%}
+.portrait .ring{position:absolute;inset:0;border-radius:50%;border:1px dashed rgba(77,225,255,.5);animation:spin 40s linear infinite}
+.portrait .ring.r2{inset:8%;border-color:rgba(255,122,61,.5);animation-duration:26s;animation-direction:reverse}
+.portrait .ring.r3{inset:-6%;border:1px solid rgba(139,123,255,.25);animation-duration:70s}
+.portrait .ring::after{content:'';position:absolute;top:-4px;left:50%;width:8px;height:8px;border-radius:50%;background:var(--cyan);box-shadow:0 0 14px var(--cyan)}
+.ring.r2::after{background:var(--plasma);box-shadow:0 0 14px var(--plasma)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.avatar{position:absolute;inset:16%;border-radius:50%;overflow:hidden;background:radial-gradient(circle at 30% 25%,#1c3a78,#070d1f 70%);border:2px solid rgba(77,225,255,.6);
+  display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:900;font-size:clamp(2.5rem,7vw,4.5rem);color:#fff;box-shadow:0 0 60px rgba(59,130,255,.45),inset 0 0 40px rgba(77,225,255,.2)}
+.avatar img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.hud{margin-top:3.5rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1rem}
+.hud div{border:1px solid var(--line);border-left:2px solid var(--cyan);background:var(--panel);padding:1rem 1.2rem;border-radius:10px}
+.hud small{font-family:var(--mono);font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);display:block}
+.hud strong{font-family:var(--display);font-size:1.5rem;color:#fff}
+.hud strong em{font-style:normal;color:var(--plasma);font-size:.9rem;margin-left:.2rem}
+.scroll-cue{position:absolute;bottom:1.2rem;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:.65rem;letter-spacing:.3em;color:var(--muted);text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:.5rem}
+.scroll-cue::after{content:'';width:1px;height:36px;background:linear-gradient(var(--cyan),transparent);animation:drop 1.8s infinite}
+@keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.streak{position:absolute;height:2px;width:160px;background:linear-gradient(90deg,transparent,var(--plasma),#fff);border-radius:2px;opacity:0;transform:rotate(28deg);animation:fall 7s linear infinite;filter:drop-shadow(0 0 6px var(--plasma))}
+@keyframes fall{0%{opacity:0;transform:translate(0,0) rotate(28deg)}8%{opacity:1}35%,100%{opacity:0;transform:translate(420px,230px) rotate(28deg)}}
 
-.btn {
-  display: inline-flex; align-items: center; gap: .5rem; padding: .65rem 1.2rem;
-  background: var(--accent); color: #1b1405; text-decoration: none; font-weight: 600; font-size: .9rem;
-  border-radius: 9px; border: 1px solid transparent; margin: .25rem .5rem .25rem 0; cursor: pointer;
-  transition: transform .15s, box-shadow .15s, background .2s;
+/* TIPE */
+.tipe{display:grid;grid-template-columns:1.1fr 1fr;gap:1.5rem;align-items:start}
+.star dt{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--plasma);margin-top:1.1rem}
+.star dt:first-child{margin-top:0}
+.star dd{color:#c3d0ea}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-bottom:1.5rem}
+.stat{border:1px solid var(--line);border-radius:14px;padding:1.2rem;background:var(--panel);text-align:left}
+.stat b{font-family:var(--display);font-size:2rem;color:#fff;display:block;line-height:1.1}
+.stat b i{font-style:normal;font-size:.95rem;color:var(--plasma);margin-left:.2rem}
+.stat span{font-size:.82rem;color:var(--muted)}
+.sim{padding:1.6rem}
+.sim canvas{width:100%;height:280px;display:block;border-radius:10px;background:rgba(0,0,0,.35);border:1px solid var(--line)}
+.ctrl{display:grid;grid-template-columns:1fr 1fr;gap:1rem 1.5rem;margin:1.2rem 0}
+.ctrl label{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between}
+.ctrl output{color:var(--cyan)}
+input[type=range]{width:100%;accent-color:var(--cyan);margin-top:.4rem}
+.legend{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}
+.legend button{font-family:var(--mono);font-size:.7rem;border:1px solid var(--line);background:transparent;color:var(--text);padding:.4rem .8rem;border-radius:999px;cursor:pointer;display:flex;align-items:center;gap:.5rem;transition:.2s}
+.legend button i{width:10px;height:10px;border-radius:50%;display:block}
+.legend button.off{opacity:.35}
+.readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:.6rem;margin-top:1rem}
+.readout div{font-family:var(--mono);font-size:.72rem;border:1px solid var(--line);border-radius:8px;padding:.6rem .8rem;color:var(--muted)}
+.readout b{display:block;color:#fff;font-size:.95rem;margin-top:.15rem}
+.note{font-size:.78rem;color:var(--muted);margin-top:1rem}
+.mat{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1.5rem}
+.mat .card{padding:1.3rem}
+.mat h4{font-family:var(--display);font-size:.85rem;letter-spacing:.06em;margin:.4rem 0}
+.mat p{font-size:.88rem;color:#b9c8e6}
+.dot{width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:.5rem}
+
+/* TIMELINE-STYLE LISTS */
+.big-quote{font-family:var(--display);font-size:clamp(1.1rem,2.4vw,1.6rem);line-height:1.5;color:#fff;border-left:2px solid var(--plasma);padding-left:1.5rem;margin:1rem 0 2.5rem;max-width:60ch}
+.skill-bars{display:grid;gap:.9rem;margin-top:.5rem}
+.skill{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.skill div{height:6px;border-radius:6px;background:rgba(255,255,255,.07);margin-top:.35rem;overflow:hidden}
+.skill div i{display:block;height:100%;width:0;border-radius:6px;background:linear-gradient(90deg,var(--cyan),var(--plasma));transition:width 1.6s cubic-bezier(.2,.8,.2,1)}
+.in .skill div i{width:var(--w)}
+.video{aspect-ratio:16/9;border:1px dashed rgba(77,225,255,.4);border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.7rem;color:var(--muted);background:rgba(0,0,0,.25);text-align:center;padding:1rem}
+.video i{font-size:2.6rem;color:var(--cyan);filter:drop-shadow(0 0 14px var(--cyan))}
+
+footer{border-top:1px solid var(--line);margin-top:4rem;padding:3rem 2rem;text-align:center;color:var(--muted);font-size:.85rem;background:linear-gradient(180deg,transparent,rgba(59,130,255,.06))}
+footer .logo{justify-content:center;margin-bottom:1rem}
+footer .links a{margin:0 .7rem;font-size:1.3rem;color:var(--muted)}
+footer .links a:hover{color:var(--cyan)}
+
+@media(max-width:900px){
+  .burger{display:block}
+  .topbar nav{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(3,6,15,.96);padding:1rem;border-bottom:1px solid var(--line)}
+  .topbar nav.open{display:block}.topbar nav ul{flex-direction:column}
+  .hero-grid,.tipe,.grid2{grid-template-columns:1fr}
+  .portrait{max-width:280px;order:-1}
+  section{padding:6rem 1.2rem 3rem}.topbar{padding:.8rem 1.2rem}
+  .ctrl{grid-template-columns:1fr}
 }
-.btn:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(0,0,0,.18); }
-.btn.ghost { background: transparent; color: #fff; border-color: rgba(255,255,255,.45); }
-.btn.ghost:hover { background: rgba(255,255,255,.1); }
-.btn.primary { background: var(--navy); color: #fff; }
-.btn.outline { background: #fff; color: var(--navy); border-color: var(--line); }
-
-/* project cards */
-.project { border-left: 4px solid var(--blue); }
-.tag {
-  display: inline-block; font-size: .72rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
-  background: var(--blue-soft); color: var(--blue); padding: .2rem .6rem; border-radius: 999px; margin-bottom: .6rem;
-}
-.tag.warm { background: #f8efdd; color: #8a6420; }
-.star dt { font-weight: 600; color: var(--navy); font-size: .88rem; margin-top: .6rem; }
-.star dd { color: var(--text); }
-
-/* sub nav */
-.subnav { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1.5rem; }
-.subnav button {
-  background: var(--card); border: 1px solid var(--line); color: var(--muted); font: inherit; font-size: .88rem; font-weight: 500;
-  padding: .55rem 1rem; border-radius: 999px; cursor: pointer; transition: all .2s;
-}
-.subnav button:hover { color: var(--navy); border-color: var(--blue); }
-.subnav button.active { background: var(--navy); color: #fff; border-color: var(--navy); }
-.sub { display: none; }
-.sub.active { display: block; animation: rise .3s ease; }
-
-.video-ph {
-  background: var(--navy); color: #aebfd6; border-radius: var(--radius); aspect-ratio: 16/9; max-height: 340px; width: 100%;
-  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .6rem; text-align: center; padding: 1rem;
-}
-.video-ph i { font-size: 2.6rem; color: var(--accent); }
-.video-wrap iframe, .video-wrap video { width: 100%; aspect-ratio: 16/9; border: 0; border-radius: var(--radius); }
-
-.todo { color: var(--muted); font-style: italic; }
-
-/* FOOTER */
-footer { margin-top: 3rem; background: var(--navy); color: #aebfd6; }
-.footer-inner { max-width: 1180px; margin: 0 auto; padding: 2rem 1.5rem; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; font-size: .88rem; }
-footer a { color: #fff; text-decoration: none; margin-left: 1rem; }
-footer a:hover { color: var(--accent); }
-
-/* RESPONSIVE */
-@media (max-width: 900px) {
-  .menu-btn { display: block; }
-  nav { display: none; position: absolute; left: 0; right: 0; top: 100%; background: var(--navy-2); padding: .5rem 1rem 1rem; border-bottom: 3px solid var(--accent); }
-  nav.open { display: block; }
-  nav ul { flex-direction: column; }
-  nav a { padding: .75rem .9rem; }
-  .hero { grid-template-columns: 1fr; text-align: center; padding: 2rem 1.5rem; justify-items: center; }
-  .hero h1 { font-size: 1.9rem; }
-  .grid-2 { grid-template-columns: 1fr; }
-  .page-title h2 { font-size: 1.6rem; }
-}
-@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}.skill div i{width:var(--w)}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
+<canvas id="stars" aria-hidden="true"></canvas>
+<div class="progress" id="progress"></div>
 
-<header>
-  <div class="header-inner">
-    <a class="brand" href="#welcome" data-tab="welcome">
-      <strong>Thomas Foltzer</strong>
-      <span>Élève-ingénieur · Toulouse INP-ENSEEIHT</span>
-    </a>
-    <button class="menu-btn" aria-label="Ouvrir le menu" aria-expanded="false" id="menuBtn"><i class="fa-solid fa-bars"></i></button>
-    <nav id="nav" aria-label="Navigation principale">
-      <ul>
-        <li><a href="#welcome" data-tab="welcome" class="active">Welcome</a></li>
-        <li><a href="#engineering" data-tab="engineering">Engineering Course</a></li>
-        <li><a href="#mobility" data-tab="mobility">International Mobility</a></li>
-        <li><a href="#sustainability" data-tab="sustainability">Sustainability &amp; Civic</a></li>
-        <li><a href="#sport" data-tab="sport">Sport &amp; Activities</a></li>
-        <li><a href="#career" data-tab="career">Career Development</a></li>
-      </ul>
-    </nav>
-  </div>
+<header class="topbar">
+  <a href="#welcome" class="logo"><i>TF</i> FOLTZER</a>
+  <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+  <nav id="nav" aria-label="Navigation">
+    <ul>
+      <li><a href="#welcome">Welcome</a></li>
+      <li><a href="#engineering">Engineering</a></li>
+      <li><a href="#mobility">Mobility</a></li>
+      <li><a href="#sustainability">Sustainability</a></li>
+      <li><a href="#sport">Sport</a></li>
+      <li><a href="#career">Career</a></li>
+    </ul>
+  </nav>
 </header>
 
-<main>
+<!-- ================= 1. WELCOME ================= -->
+<section id="welcome">
+  <div class="streak" style="top:12%;left:8%;animation-delay:0s"></div>
+  <div class="streak" style="top:30%;left:35%;animation-delay:2.6s;width:110px"></div>
+  <div class="streak" style="top:6%;left:60%;animation-delay:4.4s;width:190px"></div>
 
-  <!-- 1. WELCOME -->
-  <section id="welcome" class="tab active">
-    <div class="hero">
-      <div class="avatar" aria-hidden="true">TF</div>
+  <div class="hero-grid">
+    <div>
+      <div class="status"><b></b> E-Portfolio · Toulouse INP-ENSEEIHT · MFEE</div>
+      <h1>Thomas<span>Foltzer</span></h1>
+      <div class="role" id="role" aria-live="off"></div>
+      <p class="lead">Élève-ingénieur en 1<sup>re</sup> année au département Mécanique des Fluides, Énergie et Environnement, je me destine à l'aéronautique, au spatial et à la mobilité du futur. Curieux des technologies de propulsion et des lanceurs réutilisables, je cherche à comprendre et à concevoir les systèmes qui survivent aux environnements extrêmes.</p>
+      <a class="btn" href="#engineering"><i class="fa-solid fa-rocket"></i> Mon projet TIPE</a>
+      <a class="btn plasma" href="#career"><i class="fa-solid fa-file-lines"></i> CV &amp; contact</a>
+      <a class="btn" href="https://linkedin.com" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+    </div>
+    <div class="portrait" aria-hidden="true">
+      <div class="ring r3"></div><div class="ring"></div><div class="ring r2"></div>
+      <div class="avatar">TF<img src="photo.jpg" alt="" onerror="this.remove()"></div>
+    </div>
+  </div>
+
+  <div class="hud reveal">
+    <div><small>Niveau</small><strong>1A<em>MFEE</em></strong></div>
+    <div><small>Cap</small><strong>Aéro<em>/ Spatial</em></strong></div>
+    <div><small>Langues</small><strong>EN<em>B2/C1</em> · DE<em>B1</em></strong></div>
+    <div><small>TIPE · seuil d'érosion</small><strong>1700<em>°C</em></strong></div>
+  </div>
+  <div class="scroll-cue">Scroll</div>
+</section>
+
+<!-- ================= 2. ENGINEERING COURSE ================= -->
+<section id="engineering">
+  <div class="sec-head reveal">
+    <div class="sec-tag">01 · Engineering Course</div>
+    <h2>Parcours &amp; projets d'ingénierie</h2>
+    <p>Formation théorique, projets académiques et compétences techniques développées à Toulouse INP-ENSEEIHT, et en amont, mon TIPE de classes préparatoires.</p>
+  </div>
+
+  <div class="card reveal" style="margin-bottom:1.5rem">
+    <span class="chip hot">TIPE · Classes préparatoires</span>
+    <h3 style="font-size:1.15rem;line-height:1.5">Tuiles thermiques : comment le matériau conditionne la diffusion de la chaleur et l'endommagement en rentrée atmosphérique</h3>
+    <div class="tipe" style="margin-top:1.4rem">
+      <dl class="star">
+        <dt>Contexte</dt>
+        <dd>Avec Artemis, Ariane 6 et les lanceurs réutilisables comme Starship, la rentrée atmosphérique est l'étape la plus critique d'une mission : à plus de 25 000 km/h, le plasma atteint 1 500 à 2 000 °C. Question posée : dans quelle mesure le choix du matériau d'une tuile conditionne-t-il la diffusion de la chaleur et les dommages au fil des vols ?</dd>
+        <dt>Méthodes</dt>
+        <dd>Modélisation de l'atmosphère (ISA), de la trajectoire (méthode d'Euler), du flux au point d'arrêt (Sutton-Graves) et de la diffusion 1D dans la tuile par différences finies : équation de la chaleur, flux de Neumann en surface, rayonnement en T⁴, face interne adiabatique. Appui expérimental : méthode flash laser pour mesurer la diffusivité thermique.</dd>
+        <dt>Analyse</dt>
+        <dd>Loi d'érosion linéaire à seuil au-delà de 1 700 °C, étude du frittage et de la dévitrification qui dégradent l'isolation, et comparaison de quatre matériaux. Hypothèses discutées : propriétés constantes, pente constante, gravité constante.</dd>
+        <dt>Compétences</dt>
+        <dd>Modélisation physique, thermique, simulation numérique, esprit critique, vulgarisation scientifique.</dd>
+      </dl>
       <div>
-        <div class="eyebrow">E-Portfolio · Cycle ingénieur</div>
-        <h1>Bienvenue sur mon E-Portfolio</h1>
-        <p><strong>Note d'introduction :</strong> <span class="todo" style="color:#d5e0ef">[Ajoutez ici votre mot de bienvenue, votre présentation, votre département à l'N7 (ex : SN, 3EA, MFEE) et vos ambitions professionnelles.]</span></p>
-        <p style="margin-top:.7rem">Ce portfolio retrace mon parcours d'ingénieur sur 3 ans, mes projets techniques, mes compétences clés ainsi que mes engagements personnels.</p>
-        <div class="actions">
-          <a href="https://linkedin.com" target="_blank" rel="noopener" class="btn"><i class="fa-brands fa-linkedin"></i> Mon LinkedIn</a>
-          <a href="#career" data-tab="career" class="btn ghost"><i class="fa-solid fa-file-lines"></i> CV &amp; Elevator Pitch</a>
+        <div class="stats">
+          <div class="stat"><b data-count="3.5" data-dec="1">0<i>mm</i></b><span>d'épaisseur érodée à 2 040 K pendant 50 s</span></div>
+          <div class="stat"><b data-count="7">0<i>vols</i></b><span>avant la limite critique de la structure (modèle)</span></div>
+          <div class="stat"><b data-count="60">0<i>mm</i></b><span>d'épaisseur de tuile sur Starship : marge validée</span></div>
+          <div class="stat"><b data-count="4">0</b><span>matériaux comparés : LI-900, FRCI, PICA-X, RCC</span></div>
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="page-title"><h2>Projets récents</h2></div>
-    <div class="grid-3">
-      <article class="card project">
-        <span class="tag">En cours</span>
-        <h3>Projet 1</h3>
-        <p>Description rapide du projet d'ingénierie ou projet de spécialité.</p>
-      </article>
-      <article class="card project">
-        <span class="tag">Réalisé</span>
-        <h3>Projet 2</h3>
-        <p>Description rapide de la réalisation ou activité associative.</p>
-      </article>
+  <div class="card sim reveal">
+    <span class="chip">Démonstration interactive</span>
+    <h3><i class="fa-solid fa-fire-flame-curved"></i> Que ressent la face arrière de la tuile ?</h3>
+    <p style="color:#b9c8e6;font-size:.92rem">Une version simplifiée de mon modèle tourne ici, dans votre navigateur : diffusion 1D explicite, température de surface imposée pendant la rentrée, face interne adiabatique. Changez l'épaisseur et la température de pic pour comparer les matériaux.</p>
+    <canvas id="simCanvas" width="900" height="280" aria-label="Température de la face arrière de la tuile en fonction du temps"></canvas>
+    <div class="ctrl">
+      <label>Épaisseur de tuile <output id="oThk">60 mm</output></label>
+      <label>Température de pic en surface <output id="oPeak">1900 K</output></label>
+      <input type="range" id="thk" min="10" max="80" value="60" step="1" aria-label="Épaisseur">
+      <input type="range" id="peak" min="1200" max="2100" value="1900" step="10" aria-label="Température de pic">
     </div>
-  </section>
+    <div class="legend" id="legend"></div>
+    <div class="readout" id="readout"></div>
+    <p class="note">Démonstration pédagogique : propriétés constantes et valeurs indicatives de la littérature (conductivité, masse volumique, capacité thermique), sans érosion ni rayonnement. Elle illustre les tendances de mon étude mais ne remplace pas le modèle complet du TIPE. Ligne pointillée : limite de la structure, 500 °C.</p>
+  </div>
 
-  <!-- 2. ENGINEERING COURSE -->
-  <section id="engineering" class="tab">
-    <div class="page-title">
-      <h2>Engineering Course</h2>
-      <p>Présentation de ma formation théorique, projets académiques et compétences techniques développées à Toulouse INP-N7.</p>
-    </div>
-    <h3 style="margin-bottom:1rem">Projets &amp; productions académiques</h3>
-    <div class="grid-3">
-      <article class="card project">
-        <span class="tag">S5 / S6</span>
-        <h3>Projet de Programmation / Conception</h3>
-        <dl class="star">
-          <dt>Contexte (STAR)</dt><dd>Problématique à résoudre.</dd>
-          <dt>Rôle &amp; méthodes</dt><dd>Technologies utilisées, travail d'équipe.</dd>
-          <dt>Résultats</dt><dd>Code, rapport, compétences acquises.</dd>
-        </dl>
-      </article>
-      <article class="card project">
-        <span class="tag warm">S7 / S8</span>
-        <h3>Projet d'Ingénierie de Spécialité</h3>
-        <p class="todo">Description : à remplir ultérieurement.</p>
-      </article>
-    </div>
-  </section>
+  <div class="mat">
+    <div class="card reveal"><span class="chip">Super-isolant</span><h4><span class="dot" style="background:#4de1ff"></span>Silice LI-900</h4><p>94 % d'air, λ ≈ 0,05 W/(m·K) : le meilleur isolant, mais fragile. Idéal sur les surfaces peu sollicitées.</p></div>
+    <div class="card reveal"><span class="chip">Compromis</span><h4><span class="dot" style="background:#3dff9a"></span>FRCI</h4><p>Silice renforcée de fibres : λ ≈ 0,10 W/(m·K), ρ ≈ 192 kg/m³. Bien plus résistant aux chocs et au cisaillement.</p></div>
+    <div class="card reveal"><span class="chip hot">Ablatif</span><h4><span class="dot" style="background:#ffc46b"></span>PICA-X</h4><p>Carbone et résine phénolique qui protège en s'ablatant : λ ≈ 0,30 W/(m·K), pensé pour les flux extrêmes.</p></div>
+    <div class="card reveal"><span class="chip hot">Réfractaire</span><h4><span class="dot" style="background:#ff7a3d"></span>RCC</h4><p>Carbone-carbone : λ ≈ 4 W/(m·K), n'isole pas mais tient plus de 1 600 °C. Réservé aux nez et bords d'attaque.</p></div>
+  </div>
 
-  <!-- 3. INTERNATIONAL MOBILITY -->
-  <section id="mobility" class="tab">
-    <div class="page-title">
-      <h2>International Mobility</h2>
-      <p>Validation de la mobilité internationale obligatoire (17 semaines requises pour le diplôme, S9).</p>
+  <div class="grid2" style="margin-top:1.5rem">
+    <div class="card reveal">
+      <h3><i class="fa-solid fa-graduation-cap"></i> Cycle ingénieur MFEE</h3>
+      <p>Mécanique des Fluides, Énergie et Environnement à l'ENSEEIHT : écoulements, transferts thermiques, énergétique et simulation numérique, les fondations d'un profil aéro/spatial.</p>
+      <p>Actuellement en 1<sup>re</sup> année : mon TIPE reste mon projet technique de référence en attendant les projets de l'ENSEEIHT.</p>
     </div>
-    <div class="grid-2">
-      <article class="card">
-        <h3><i class="fa-solid fa-language"></i> LV2 &amp; projets linguistiques</h3>
-        <p><strong>Niveau d'anglais visé :</strong> B2+ / C1.</p>
-        <p>Détails des cours de langues et certifications (TOEIC / IELTS).</p>
-      </article>
-      <article class="card">
-        <h3><i class="fa-solid fa-earth-europe"></i> Projets de mobilité internationale</h3>
-        <p>Détails sur les échanges académiques (Erasmus, double diplôme) ou stages à l'étranger.</p>
-      </article>
-    </div>
-  </section>
-
-  <!-- 4. SUSTAINABILITY -->
-  <section id="sustainability" class="tab">
-    <div class="page-title">
-      <h2>Sustainability &amp; Civic Engagement</h2>
-      <p>Validation des 40 h d'engagement citoyen / développement durable requises au S9.</p>
-    </div>
-    <article class="card">
-      <h3><i class="fa-solid fa-leaf"></i> Actions &amp; impact</h3>
-      <ul>
-        <li><strong>Projet citoyen / associatif :</strong> <span class="todo">[Description de l'action]</span></li>
-        <li><strong>Sensibilisation DD&amp;RS :</strong> Fresque du Climat, projets éco-responsables à l'N7.</li>
-      </ul>
-    </article>
-  </section>
-
-  <!-- 5. SPORT -->
-  <section id="sport" class="tab">
-    <div class="page-title">
-      <h2>Sport &amp; Other Activities</h2>
-      <p>Compétences transversales (soft skills) développées via le sport, les arts ou l'engagement associatif à l'N7.</p>
-    </div>
-    <div class="grid-2">
-      <article class="card">
-        <h3><i class="fa-solid fa-person-running"></i> Pratique sportive</h3>
-        <p>Sports pratiqués, compétitions BDS, travail d'équipe et esprit de dépassement.</p>
-      </article>
-      <article class="card">
-        <h3><i class="fa-solid fa-music"></i> Loisirs &amp; centres d'intérêt</h3>
-        <p>Musique, projets personnels, bénévolat, passions.</p>
-      </article>
-    </div>
-  </section>
-
-  <!-- 6. CAREER -->
-  <section id="career" class="tab">
-    <div class="page-title">
-      <h2>Career Development</h2>
-      <p>Section dédiée à l'insertion professionnelle et aux livrables évalués du module Marketing / CAM L3.</p>
-    </div>
-
-    <div class="subnav" role="tablist">
-      <button class="active" data-sub="sub-cv" role="tab">CV &amp; LinkedIn</button>
-      <button data-sub="sub-pitch" role="tab">Elevator Pitch (UVP)</button>
-      <button data-sub="sub-rolemodels" role="tab">Role Models &amp; Mobility</button>
-      <button data-sub="sub-internships" role="tab">Stages &amp; PEP</button>
-    </div>
-
-    <div id="sub-cv" class="sub active">
-      <div class="grid-2">
-        <article class="card">
-          <h3><i class="fa-solid fa-file-arrow-down"></i> CV téléchargeables</h3>
-          <p class="muted">Ajoutez vos fichiers PDF dans le dépôt, puis mettez leur nom dans les liens.</p>
-          <p style="margin-top:1rem">
-            <a href="#" class="btn primary"><i class="fa-solid fa-download"></i> CV (English)</a>
-            <a href="#" class="btn primary"><i class="fa-solid fa-download"></i> CV (Français)</a>
-          </p>
-        </article>
-        <article class="card">
-          <h3><i class="fa-brands fa-linkedin"></i> Réseaux professionnels</h3>
-          <p class="muted">Lien direct vers mes profils à jour.</p>
-          <p style="margin-top:1rem"><a href="https://linkedin.com" target="_blank" rel="noopener" class="btn outline"><i class="fa-brands fa-linkedin"></i> Profil LinkedIn (FR / EN)</a></p>
-        </article>
+    <div class="card reveal">
+      <h3><i class="fa-solid fa-microchip"></i> Compétences clés</h3>
+      <div class="skill-bars">
+        <div class="skill">Modélisation thermique<div><i style="--w:88%"></i></div></div>
+        <div class="skill">Simulation numérique<div><i style="--w:82%"></i></div></div>
+        <div class="skill">Mécanique des fluides<div><i style="--w:78%"></i></div></div>
+        <div class="skill">Analyse critique &amp; rigueur<div><i style="--w:90%"></i></div></div>
       </div>
-    </div>
-
-    <div id="sub-pitch" class="sub">
-      <article class="card">
-        <h3><i class="fa-solid fa-video"></i> Elevator Pitch – Unique Value Proposition</h3>
-        <p class="muted" style="margin-bottom:1rem">Vidéo de 2 à 3 minutes en anglais présentant ma proposition de valeur unique.</p>
-        <div class="video-ph"><i class="fa-solid fa-circle-play"></i><span>[Intégrer ici le lien iframe ou la vidéo MP4 du pitch UVP]</span></div>
-        <p style="margin-top:1rem"><strong>Structure :</strong> Present + Past + Future</p>
-      </article>
-    </div>
-
-    <div id="sub-rolemodels" class="sub">
-      <div class="grid-2">
-        <article class="card">
-          <h3><i class="fa-solid fa-user-tie"></i> 3 Role Models analysés</h3>
-          <p class="muted" style="margin-bottom:.6rem">MyJobGlasses / Alumni N7</p>
-          <ul>
-            <li><strong>Modèle 1 :</strong> <span class="todo">[Ingénieur / poste – analyse]</span></li>
-            <li><strong>Modèle 2 :</strong> <span class="todo">[Ingénieur / poste – analyse]</span></li>
-            <li><strong>Modèle 3 :</strong> <span class="todo">[Ingénieur / poste – analyse]</span></li>
-          </ul>
-        </article>
-        <article class="card">
-          <h3><i class="fa-solid fa-plane"></i> 3 Projets de mobilité alignés</h3>
-          <p class="muted" style="margin-bottom:.6rem">Destination / entreprise / université</p>
-          <ul>
-            <li><strong>Projet 1 :</strong> <span class="todo">[Destination / entreprise / université]</span></li>
-            <li><strong>Projet 2 :</strong> <span class="todo">[Destination / entreprise / université]</span></li>
-            <li><strong>Projet 3 :</strong> <span class="todo">[Destination / entreprise / université]</span></li>
-          </ul>
-        </article>
-      </div>
-    </div>
-
-    <div id="sub-internships" class="sub">
-      <article class="card">
-        <h3><i class="fa-solid fa-briefcase"></i> Stages &amp; Projet d'Exploration Professionnelle (PEP)</h3>
-        <p>Historique des stages et suivis d'insertion (Stage S6, Stage S8, PEP).</p>
-      </article>
-    </div>
-  </section>
-
-</main>
-
-<footer>
-  <div class="footer-inner">
-    <div>
-      <strong style="color:#fff">Thomas Foltzer</strong> · E-Portfolio · Toulouse INP-ENSEEIHT<br>
-      <small>Conforme à la structure recommandée par la direction des études de l'N7</small>
-    </div>
-    <div>
-      <a href="https://linkedin.com" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-      <a href="https://github.com/thomasfoltzer8745" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
+      <p class="note">Niveaux indicatifs, à ajuster selon votre ressenti.</p>
     </div>
   </div>
+</section>
+
+<!-- ================= 3. INTERNATIONAL MOBILITY ================= -->
+<section id="mobility">
+  <div class="sec-head reveal">
+    <div class="sec-tag">02 · International Mobility</div>
+    <h2>Cap sur l'international</h2>
+    <p>Validation de la mobilité internationale obligatoire : 17 semaines requises pour le diplôme (S9).</p>
+  </div>
+  <div class="grid2">
+    <div class="card reveal">
+      <h3><i class="fa-solid fa-earth-europe"></i> Projet de mobilité</h3>
+      <p>Je prévois un <strong>job d'été en entreprise en fin d'année</strong>, en France ou à l'étranger, avec les <strong>États-Unis</strong> comme destination envisagée. Objectif : progresser en anglais, découvrir un environnement de travail différent et nourrir mon projet dans l'aéro/spatial.</p>
+      <p class="todo">Statut : recherche pas encore démarrée.</p>
+    </div>
+    <div class="card reveal">
+      <h3><i class="fa-solid fa-language"></i> Langues</h3>
+      <p><strong>Anglais :</strong> B2 / C1.</p>
+      <p><strong>Allemand (LV2) :</strong> environ B1, en progression.</p>
+      <p class="todo">Certification (TOEIC / IELTS) : à compléter.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 4. SUSTAINABILITY ================= -->
+<section id="sustainability">
+  <div class="sec-head reveal">
+    <div class="sec-tag">03 · Sustainability &amp; Civic</div>
+    <h2>Engagement &amp; impact</h2>
+    <p>Validation des 40 h d'engagement citoyen / développement durable requises au S9.</p>
+  </div>
+  <div class="grid2">
+    <div class="card reveal">
+      <h3><i class="fa-solid fa-hand-holding-heart"></i> Projet citoyen / associatif</h3>
+      <p class="todo">Description de l'action : à compléter.</p>
+    </div>
+    <div class="card reveal">
+      <h3><i class="fa-solid fa-leaf"></i> Sensibilisation DD&amp;RS</h3>
+      <p>Un lien naturel avec mon intérêt pour la réutilisabilité des lanceurs, qui réduit le coût et l'impact de l'accès à l'espace.</p>
+      <p class="todo">Fresque du Climat et autres actions à l'N7 : à compléter si vous y participez.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 5. SPORT ================= -->
+<section id="sport">
+  <div class="sec-head reveal">
+    <div class="sec-tag">04 · Sport &amp; Activities</div>
+    <h2>Discipline &amp; dépassement</h2>
+    <p>Compétences transversales (soft skills) développées par le sport et les passions.</p>
+  </div>
+  <div class="grid3">
+    <div class="card reveal">
+      <h3><i class="fa-solid fa-dumbbell"></i> Musculation</h3>
+      <p><strong>3 séances par semaine.</strong> Discipline, progression par paliers et constance dans l'effort.</p>
+    </div>
+    <div class="card reveal">
+      <h3><i class="fa-solid fa-horse"></i> Équitation de compétition</h3>
+      <p><strong>5 ans de pratique</strong> en CSO et dressage, <strong>Galop 5</strong>, encadré par un cavalier professionnel, avec une bonne progression et des compétitions.</p>
+      <p>J'y ai appris la rigueur et la gestion complète d'un animal : soins, préparation, relation de confiance. Une forme de travail d'équipe, avec un partenaire qui ne parle pas.</p>
+    </div>
+    <div class="card reveal">
+      <h3><i class="fa-solid fa-user-astronaut"></i> Centres d'intérêt</h3>
+      <p>Depuis plusieurs années, je suis avec passion le développement des fusées : Starship, New Shepard, Ariane 6. C'est ce qui a donné naissance à mon sujet de TIPE.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 6. CAREER ================= -->
+<section id="career">
+  <div class="sec-head reveal">
+    <div class="sec-tag">05 · Career Development</div>
+    <h2>Projet professionnel</h2>
+    <p>Insertion professionnelle et livrables évalués du module Marketing / CAM L3.</p>
+  </div>
+
+  <div class="big-quote reveal">Concevoir des systèmes qui résistent aux environnements les plus hostiles, du plasma de rentrée au vide spatial.</div>
+
+  <div class="grid2" style="margin-bottom:1.5rem">
+    <div class="card reveal">
+      <h3><i class="fa-solid fa-satellite"></i> Secteurs &amp; entreprises visés</h3>
+      <p>Mon intérêt : le développement des technologies, le progrès et surtout la <strong>propulsion</strong>.</p>
+      <p style="margin-top:1rem">
+        <span class="chip">SpaceX</span> <span class="chip">Airbus</span> <span class="chip">Thales</span>
+        <span class="chip">Safran</span> <span class="chip">ArianeGroup</span> <span class="chip">ESA</span>
+      </p>
+    </div>
+    <div class="card reveal">
+      <h3><i class="fa-solid fa-star"></i> Mes qualités</h3>
+      <ul>
+        <li><strong>Curieux :</strong> je suis l'actualité des lanceurs depuis des années.</li>
+        <li><strong>Patient :</strong> la rigueur de l'équitation et de la modélisation.</li>
+        <li><strong>À l'écoute :</strong> un point souvent relevé par mon entourage.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="card reveal">
+      <h3><i class="fa-solid fa-file-arrow-down"></i> CV &amp; LinkedIn</h3>
+      <p>Mes CV à jour et mon profil professionnel.</p>
+      <p>
+        <a class="btn plasma" href="#"><i class="fa-solid fa-download"></i> CV (FR)</a>
+        <a class="btn plasma" href="#"><i class="fa-solid fa-download"></i> CV (EN)</a>
+        <a class="btn" href="https://linkedin.com" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+      </p>
+      <p class="todo">Ajoutez vos PDF dans le dépôt et remplacez les « # » par leur nom, par exemple cv-fr.pdf.</p>
+    </div>
+    <div class="card reveal">
+      <h3><i class="fa-solid fa-video"></i> Elevator Pitch (UVP)</h3>
+      <div class="video"><i class="fa-solid fa-circle-play"></i><span>Vidéo de 2 à 3 minutes en anglais<br><small>Structure : Present + Past + Future</small></span></div>
+    </div>
+    <div class="card reveal">
+      <h3><i class="fa-solid fa-user-tie"></i> 3 Role Models analysés</h3>
+      <p class="todo">MyJobGlasses / Alumni N7</p>
+      <ul>
+        <li><strong>Modèle 1 :</strong> <span class="todo">[ingénieur / poste, analyse]</span></li>
+        <li><strong>Modèle 2 :</strong> <span class="todo">[ingénieur / poste, analyse]</span></li>
+        <li><strong>Modèle 3 :</strong> <span class="todo">[ingénieur / poste, analyse]</span></li>
+      </ul>
+    </div>
+    <div class="card reveal">
+      <h3><i class="fa-solid fa-plane-departure"></i> 3 Projets de mobilité alignés</h3>
+      <ul>
+        <li><strong>Projet 1 :</strong> <span class="todo">[destination / entreprise / université]</span></li>
+        <li><strong>Projet 2 :</strong> <span class="todo">[destination / entreprise / université]</span></li>
+        <li><strong>Projet 3 :</strong> <span class="todo">[destination / entreprise / université]</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="card reveal" style="margin-top:1.5rem">
+    <h3><i class="fa-solid fa-briefcase"></i> Stages &amp; Projet d'Exploration Professionnelle (PEP)</h3>
+    <p>Historique des stages et suivis d'insertion : Stage S6, Stage S8, PEP.</p>
+    <p class="todo">À compléter au fil du parcours.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="logo"><i>TF</i> THOMAS FOLTZER</div>
+  <p>E-Portfolio · Toulouse INP-ENSEEIHT · Département MFEE</p>
+  <p style="margin-top:.4rem"><small>Conforme à la structure recommandée par la direction des études de l'N7</small></p>
+  <div class="links" style="margin-top:1.2rem">
+    <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+    <a href="https://github.com/thomasfoltzer8745" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+  </div>
+  <p style="margin-top:1.2rem"><small>© 2026 Thomas Foltzer</small></p>
 </footer>
 
 <script>
-(function () {
-  var tabs = document.querySelectorAll('.tab');
-  var links = document.querySelectorAll('[data-tab]');
-  var nav = document.getElementById('nav');
-  var menuBtn = document.getElementById('menuBtn');
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  function show(id, push) {
-    if (!document.getElementById(id)) id = 'welcome';
-    tabs.forEach(function (t) { t.classList.toggle('active', t.id === id); });
-    document.querySelectorAll('nav a').forEach(function (a) {
-      a.classList.toggle('active', a.dataset.tab === id);
-    });
-    nav.classList.remove('open');
-    menuBtn.setAttribute('aria-expanded', 'false');
-    if (push && location.hash !== '#' + id) history.pushState(null, '', '#' + id);
-    window.scrollTo({ top: 0 });
+  /* ---------- STARFIELD ---------- */
+  var cv = document.getElementById('stars'), cx = cv.getContext('2d'), W, H, stars = [], mx = 0, my = 0;
+  function resize(){
+    var d = Math.min(window.devicePixelRatio||1, 2);
+    W = cv.width = innerWidth*d; H = cv.height = innerHeight*d; cv.style.width = innerWidth+'px'; cv.style.height = innerHeight+'px';
+    var n = Math.round(innerWidth*innerHeight/5500); stars = [];
+    for(var i=0;i<n;i++) stars.push({x:Math.random()*W,y:Math.random()*H,z:Math.random()*.9+.1,r:Math.random()*1.4+.3,p:Math.random()*6.28});
   }
+  addEventListener('resize', resize); resize();
+  addEventListener('mousemove', function(e){ mx = (e.clientX/innerWidth-.5); my = (e.clientY/innerHeight-.5); });
+  function drawStars(t){
+    cx.clearRect(0,0,W,H);
+    var sy = scrollY*.25;
+    for(var i=0;i<stars.length;i++){
+      var s = stars[i];
+      var x = (s.x - mx*40*s.z*2 + W) % W;
+      var y = ((s.y - sy*s.z*2 - my*40*s.z*2) % H + H) % H;
+      var a = .35 + .65*Math.abs(Math.sin(t/1400 + s.p));
+      cx.globalAlpha = reduce ? .7 : a*s.z;
+      cx.fillStyle = s.z>.8 ? '#bfe9ff' : (s.z<.3 ? '#ffd9b8' : '#ffffff');
+      cx.beginPath(); cx.arc(x,y,s.r*s.z*1.3,0,6.283); cx.fill();
+    }
+    cx.globalAlpha = 1;
+    if(!reduce) requestAnimationFrame(drawStars);
+  }
+  requestAnimationFrame(drawStars);
 
-  links.forEach(function (a) {
-    a.addEventListener('click', function (e) { e.preventDefault(); show(a.dataset.tab, true); });
-  });
-  window.addEventListener('popstate', function () { show(location.hash.slice(1), false); });
-  show(location.hash.slice(1) || 'welcome', false);
+  /* ---------- NAV ---------- */
+  var nav = document.getElementById('nav'), burger = document.getElementById('burger');
+  burger.addEventListener('click', function(){ var o = nav.classList.toggle('open'); burger.setAttribute('aria-expanded', o); });
+  nav.addEventListener('click', function(e){ if(e.target.tagName==='A') nav.classList.remove('open'); });
+  var links = [].slice.call(document.querySelectorAll('.topbar nav a'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  var bar = document.getElementById('progress');
+  function onScroll(){
+    var h = document.documentElement.scrollHeight - innerHeight;
+    bar.style.width = (scrollY/h*100)+'%';
+    var cur = 0, y = scrollY + innerHeight*.35;
+    secs.forEach(function(s,i){ if(s.offsetTop <= y) cur = i; });
+    links.forEach(function(a,i){ a.classList.toggle('active', i===cur); });
+  }
+  addEventListener('scroll', onScroll, {passive:true}); onScroll();
 
-  menuBtn.addEventListener('click', function () {
-    var open = nav.classList.toggle('open');
-    menuBtn.setAttribute('aria-expanded', open);
-  });
-
-  document.querySelectorAll('.subnav button').forEach(function (b) {
-    b.addEventListener('click', function () {
-      document.querySelectorAll('.subnav button').forEach(function (x) { x.classList.toggle('active', x === b); });
-      document.querySelectorAll('.sub').forEach(function (s) { s.classList.toggle('active', s.id === b.dataset.sub); });
+  /* ---------- REVEAL + COUNTERS ---------- */
+  function count(el){
+    var b = el.querySelector('b[data-count]') || el; if(!b.dataset || !b.dataset.count) return;
+    var target = parseFloat(b.dataset.count), dec = +b.dataset.dec||0, unit = b.querySelector('i'), unitHTML = unit ? unit.outerHTML : '';
+    var t0 = performance.now();
+    (function step(t){
+      var p = Math.min((t-t0)/1400,1), e = 1-Math.pow(1-p,3);
+      b.innerHTML = (target*e).toFixed(dec).replace('.',',') + unitHTML;
+      if(p<1) requestAnimationFrame(step);
+    })(t0);
+  }
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        e.target.querySelectorAll('.stat').forEach(function(s){ reduce ? finalCount(s) : count(s); });
+        io.unobserve(e.target);
+      }
     });
+  },{threshold:.12});
+  function finalCount(s){ var b = s.querySelector('b[data-count]'); if(b){ var u = b.querySelector('i'); b.innerHTML = b.dataset.count.replace('.',',') + (u?u.outerHTML:''); } }
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  document.querySelectorAll('.card').forEach(function(c){
+    c.addEventListener('pointermove', function(e){ var r = c.getBoundingClientRect(); c.style.setProperty('--mx',(e.clientX-r.left)+'px'); c.style.setProperty('--my',(e.clientY-r.top)+'px'); });
   });
+
+  /* ---------- TYPEWRITER ---------- */
+  var roles = ['Élève-ingénieur MFEE · ENSEEIHT','Passionné d\'aéronautique &amp; de spatial'.replace('&amp;','&'),'Thermique · Fluides · Simulation numérique','En route vers l\'aéro, le spatial et la mobilité'];
+  var rEl = document.getElementById('role'), ri = 0, ci = 0, del = false;
+  (function type(){
+    var w = roles[ri];
+    if(reduce){ rEl.textContent = w; return; }
+    rEl.textContent = w.slice(0,ci);
+    if(!del && ci < w.length){ ci++; setTimeout(type,55); }
+    else if(!del){ del = true; setTimeout(type,1800); }
+    else if(ci > 0){ ci--; setTimeout(type,28); }
+    else { del = false; ri = (ri+1)%roles.length; setTimeout(type,300); }
+  })();
+
+  /* ---------- THERMAL SIMULATOR ---------- */
+  var MATS = [
+    {n:'LI-900', lam:.05, rho:144, cp:1000, c:'#4de1ff'},
+    {n:'FRCI',   lam:.10, rho:192, cp:1000, c:'#3dff9a'},
+    {n:'PICA-X', lam:.30, rho:280, cp:1500, c:'#ffc46b'},
+    {n:'RCC',    lam:4.0, rho:1600,cp:800,  c:'#ff7a3d'}
+  ];
+  var on = [true,true,true,true], TOT = 1500, T0 = 300, LIM = 773;
+  var sc = document.getElementById('simCanvas'), sx = sc.getContext('2d');
+  var thk = document.getElementById('thk'), pk = document.getElementById('peak');
+  var oThk = document.getElementById('oThk'), oPeak = document.getElementById('oPeak');
+  var legend = document.getElementById('legend'), readout = document.getElementById('readout');
+
+  function surf(t,peak){ var x = (t-450)/200; return T0 + (peak-T0)*Math.exp(-x*x); }
+  function simulate(m, L, peak){
+    var N = 36, dx = L/(N-1), a = m.lam/(m.rho*m.cp), dt = .4*dx*dx/a;
+    if(dt > 2) dt = 2;
+    var T = new Float64Array(N).fill(T0), Tn = new Float64Array(N), out = [], t = 0, k = 0, rec = TOT/150;
+    var nextRec = 0, r = a*dt/(dx*dx);
+    while(t <= TOT){
+      if(t >= nextRec){ out.push(T[N-1]); nextRec += rec; }
+      T[0] = surf(t,peak);
+      for(var i=1;i<N-1;i++) Tn[i] = T[i] + r*(T[i+1]-2*T[i]+T[i-1]);
+      Tn[N-1] = T[N-1] + 2*r*(T[N-2]-T[N-1]);
+      Tn[0] = T[0];
+      var tmp = T; T = Tn; Tn = tmp; t += dt;
+    }
+    return out;
+  }
+  function draw(){
+    var L = thk.value/1000, peak = +pk.value;
+    oThk.textContent = thk.value+' mm'; oPeak.textContent = peak+' K';
+    var res = MATS.map(function(m){ return simulate(m,L,peak); });
+    var d = Math.min(devicePixelRatio||1,2), w = sc.clientWidth, h = sc.clientHeight;
+    sc.width = w*d; sc.height = h*d; sx.setTransform(d,0,0,d,0,0);
+    var pad = {l:46,r:14,t:14,b:30}, Tmax = Math.max(peak+100, 1000);
+    function X(i){ return pad.l + (w-pad.l-pad.r)*i/150; }
+    function Y(T){ return pad.t + (h-pad.t-pad.b)*(1-(T-250)/(Tmax-250)); }
+    sx.clearRect(0,0,w,h);
+    sx.font = '10px JetBrains Mono, monospace'; sx.fillStyle = '#8a9bbd'; sx.strokeStyle = 'rgba(120,170,255,.12)'; sx.lineWidth = 1;
+    for(var T=500; T<=Tmax; T+=500){ sx.beginPath(); sx.moveTo(pad.l,Y(T)); sx.lineTo(w-pad.r,Y(T)); sx.stroke(); sx.fillText(T+' K',4,Y(T)+3); }
+    for(var s=0; s<=TOT; s+=300){ var xi = X(s/TOT*150); sx.fillText(s+' s',xi-10,h-10); }
+    // surface profile
+    sx.strokeStyle = 'rgba(255,255,255,.25)'; sx.setLineDash([2,4]); sx.beginPath();
+    for(var i=0;i<=150;i++){ var y = Y(surf(i/150*TOT,peak)); i?sx.lineTo(X(i),y):sx.moveTo(X(i),y); }
+    sx.stroke(); sx.fillStyle = 'rgba(255,255,255,.4)'; sx.fillText('surface',w-pad.r-46,Y(surf(TOT,peak))-6);
+    // limit
+    sx.strokeStyle = 'rgba(255,90,90,.8)'; sx.setLineDash([6,5]); sx.beginPath(); sx.moveTo(pad.l,Y(LIM)); sx.lineTo(w-pad.r,Y(LIM)); sx.stroke();
+    sx.fillStyle = '#ff7a7a'; sx.fillText('limite structure 500 °C',pad.l+6,Y(LIM)-5);
+    sx.setLineDash([]);
+    res.forEach(function(r,mi){
+      if(!on[mi]) return;
+      sx.strokeStyle = MATS[mi].c; sx.lineWidth = 2.2; sx.shadowColor = MATS[mi].c; sx.shadowBlur = 8; sx.beginPath();
+      r.forEach(function(T,i){ i?sx.lineTo(X(i),Y(T)):sx.moveTo(X(i),Y(T)); }); sx.stroke(); sx.shadowBlur = 0;
+    });
+    readout.innerHTML = MATS.map(function(m,mi){
+      var mx_ = Math.max.apply(null,res[mi]), over = mx_ > LIM;
+      return '<div style="'+(on[mi]?'':'opacity:.35')+'">'+m.n+'<b style="color:'+(over?'#ff7a7a':'#3dff9a')+'">'+Math.round(mx_-273.15)+' °C</b>'+(over?'dépasse la limite':'sous la limite')+'</div>';
+    }).join('');
+  }
+  legend.innerHTML = MATS.map(function(m,i){ return '<button data-i="'+i+'" aria-pressed="true"><i style="background:'+m.c+';box-shadow:0 0 8px '+m.c+'"></i>'+m.n+'</button>'; }).join('');
+  legend.addEventListener('click', function(e){
+    var b = e.target.closest('button'); if(!b) return; var i = +b.dataset.i; on[i] = !on[i];
+    b.classList.toggle('off', !on[i]); b.setAttribute('aria-pressed', on[i]); draw();
+  });
+  thk.addEventListener('input', draw); pk.addEventListener('input', draw);
+  addEventListener('resize', draw);
+  draw();
 })();
 </script>
 </body>

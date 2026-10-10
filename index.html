@@ -34,13 +34,28 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;
   padding:.8rem 2rem;background:linear-gradient(180deg,rgba(3,6,15,.85),rgba(3,6,15,.35));backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 .logo{font-family:var(--display);font-weight:900;letter-spacing:.12em;color:#fff;font-size:1.05rem;display:flex;align-items:center;gap:.6rem}
 .logo i{width:30px;height:30px;border:1px solid var(--cyan);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-style:normal;font-size:.7rem;color:var(--cyan);box-shadow:0 0 14px rgba(77,225,255,.5)}
-.topbar nav ul{display:flex;gap:.2rem;list-style:none}
+.topbar nav ul{display:flex;gap:.2rem;list-style:none}.topbar{gap:.5rem}.topbar nav{order:3}.lang{order:2}.logo{margin-right:auto}.lang{margin-left:1rem}
 .topbar nav a{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:.5rem .8rem;border-radius:6px;transition:.25s;display:block}
 .topbar nav a:hover{color:#fff;background:rgba(255,255,255,.06)}
 .topbar nav a.active{color:var(--cyan);background:rgba(77,225,255,.08);box-shadow:inset 0 -2px 0 var(--cyan)}
+.lang{margin-left:auto;margin-right:1rem;display:flex;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.04);cursor:pointer;padding:3px;font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;transition:.25s}.lang:hover{border-color:var(--cyan);box-shadow:0 0 16px rgba(77,225,255,.35)}.lang span{padding:.3rem .65rem;border-radius:999px;color:var(--muted);transition:.25s}.lang span.on{background:var(--cyan);color:#001018;font-weight:500}
 .burger{display:none;background:none;border:1px solid var(--line);color:#fff;border-radius:8px;padding:.4rem .7rem;cursor:pointer}
 .progress{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--cyan),var(--plasma));z-index:60;box-shadow:0 0 12px var(--cyan)}
 
+
+.subnav{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem}
+.subnav button{font-family:var(--mono);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);background:var(--panel);border:1px solid var(--line);padding:.7rem 1.4rem;border-radius:999px;cursor:pointer;transition:.25s}
+.subnav button:hover{color:#fff;border-color:var(--cyan)}
+.subnav button.active{color:#001018;background:var(--cyan);border-color:var(--cyan);box-shadow:0 0 22px rgba(77,225,255,.45)}
+.etab{display:none}.etab.active{display:block;animation:rise .45s ease}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.tab-intro{margin-bottom:1.5rem}.tab-intro h3{font-family:var(--display);font-size:1.3rem;color:#fff;margin-bottom:.4rem}.tab-intro p{color:var(--muted);max-width:75ch}
+.topbar nav a{white-space:nowrap}
+@media(max-width:1180px){
+  .burger{display:block}
+  .topbar nav{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(3,6,15,.96);padding:1rem;border-bottom:1px solid var(--line)}
+  .topbar nav.open{display:block}.topbar nav ul{flex-direction:column}
+}
 /* LAYOUT */
 section{position:relative;padding:7rem 2rem 4rem;max-width:1200px;margin:0 auto}
 .sec-head{margin-bottom:3rem}
@@ -165,15 +180,16 @@ footer .links a:hover{color:var(--cyan)}
 
 <header class="topbar">
   <a href="#welcome" class="logo"><i>TF</i> FOLTZER</a>
+  <button class="lang" id="langBtn" type="button" aria-label="Changer de langue / Switch language"><span data-l="fr">FR</span><span data-l="en">EN</span></button>
   <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
   <nav id="nav" aria-label="Navigation">
     <ul>
-      <li><a href="#welcome">Welcome</a></li>
-      <li><a href="#engineering">Engineering</a></li>
-      <li><a href="#mobility">Mobility</a></li>
-      <li><a href="#sustainability">Sustainability</a></li>
-      <li><a href="#sport">Sport</a></li>
-      <li><a href="#career">Career</a></li>
+      <li><a href="#welcome" data-i18n="k0">Welcome</a></li>
+      <li><a href="#engineering" data-i18n="k1">Engineering Course</a></li>
+      <li><a href="#mobility" data-i18n="k2">International Mobility</a></li>
+      <li><a href="#sustainability" data-i18n="k3">Sustainability &amp; Civic</a></li>
+      <li><a href="#sport" data-i18n="k4">Sport &amp; Activities</a></li>
+      <li><a href="#career" data-i18n="k5">Career Development</a></li>
     </ul>
   </nav>
 </header>
@@ -186,13 +202,12 @@ footer .links a:hover{color:var(--cyan)}
 
   <div class="hero-grid">
     <div>
-      <div class="status"><b></b> E-Portfolio · Toulouse INP-ENSEEIHT · MFEE</div>
+      <div class="status" data-i18n="k6"><b></b> E-Portfolio · Toulouse INP-ENSEEIHT · MFEE</div>
       <h1>Thomas<span>Foltzer</span></h1>
       <div class="role" id="role" aria-live="off"></div>
-      <p class="lead">Élève-ingénieur en 1<sup>re</sup> année au département Mécanique des Fluides, Énergie et Environnement, je me destine à l'aéronautique, au spatial et à la mobilité du futur. Curieux des technologies de propulsion et des lanceurs réutilisables, je cherche à comprendre et à concevoir les systèmes qui survivent aux environnements extrêmes.</p>
-      <a class="btn" href="#engineering"><i class="fa-solid fa-rocket"></i> Mon projet TIPE</a>
-      <a class="btn plasma" href="#career"><i class="fa-solid fa-file-lines"></i> CV &amp; contact</a>
-      <a class="btn" href="https://linkedin.com" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+      <p class="lead" data-i18n="k7">Élève-ingénieur en 1<sup>re</sup> année au département Mécanique des Fluides, Énergie et Environnement, je me destine à l'aéronautique, au spatial et à la mobilité du futur. Curieux des technologies de propulsion et des lanceurs réutilisables, je cherche à comprendre et à concevoir les systèmes qui survivent aux environnements extrêmes.</p>
+      <a class="btn plasma" href="#career" data-i18n="k9"><i class="fa-solid fa-file-lines"></i> CV &amp; contact</a>
+      <a class="btn" href="https://linkedin.com" target="_blank" rel="noopener" data-i18n="k10"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
     </div>
     <div class="portrait" aria-hidden="true">
       <div class="ring r3"></div><div class="ring"></div><div class="ring r2"></div>
@@ -201,35 +216,65 @@ footer .links a:hover{color:var(--cyan)}
   </div>
 
   <div class="hud reveal">
-    <div><small>Niveau</small><strong>1A<em>MFEE</em></strong></div>
-    <div><small>Cap</small><strong>Aéro<em>/ Spatial</em></strong></div>
-    <div><small>Langues</small><strong>EN<em>B2/C1</em> · DE<em>B1</em></strong></div>
-    <div><small>TIPE · seuil d'érosion</small><strong>1700<em>°C</em></strong></div>
+    <div><small data-i18n="k11">Niveau</small><strong>1A<em>MFEE</em></strong></div>
+    <div><small data-i18n="k12">Cap</small><strong>Aéro<em>/ Spatial</em></strong></div>
+    <div><small data-i18n="k13">Langues</small><strong>EN<em>B2/C1</em> · DE<em>B1</em></strong></div>
   </div>
-  <div class="scroll-cue">Scroll</div>
+  <div class="scroll-cue" data-i18n="k15">Scroll</div>
 </section>
 
 <!-- ================= 2. ENGINEERING COURSE ================= -->
 <section id="engineering">
   <div class="sec-head reveal">
-    <div class="sec-tag">01 · Engineering Course</div>
-    <h2>Parcours &amp; projets d'ingénierie</h2>
-    <p>Formation théorique, projets académiques et compétences techniques développées à Toulouse INP-ENSEEIHT, et en amont, mon TIPE de classes préparatoires.</p>
+    <div class="sec-tag" data-i18n="k16">01 · Engineering Course</div>
+    <h2 data-i18n="k17">Parcours &amp; projets d'ingénierie</h2>
+    <p data-i18n="k18">Formation théorique, projets académiques et compétences techniques développées à Toulouse INP-ENSEEIHT. Mon TIPE de classes préparatoires a son propre onglet.</p>
   </div>
 
+  <div class="subnav" role="tablist">
+    <button type="button" class="active" data-etab="eng-course" role="tab" data-i18n="k126">Cursus MFEE</button>
+    <button type="button" data-etab="eng-tipe" role="tab" data-i18n="k127">TIPE</button>
+  </div>
+
+  <div id="eng-course" class="etab active">
+  <div class="grid2" style="margin-top:1.5rem">
+    <div class="card reveal">
+      <h3 data-i18n="k47"><i class="fa-solid fa-graduation-cap"></i> Cycle ingénieur MFEE</h3>
+      <p data-i18n="k48">Mécanique des Fluides, Énergie et Environnement à l'ENSEEIHT : écoulements, transferts thermiques, énergétique et simulation numérique, les fondations d'un profil aéro/spatial.</p>
+      <p data-i18n="k49">Actuellement en 1<sup>re</sup> année : mon TIPE reste mon projet technique de référence en attendant les projets de l'ENSEEIHT.</p>
+      <p><a class="btn plasma" href="#engineering" data-etab="eng-tipe" data-i18n="k125"><i class="fa-solid fa-rocket"></i> Voir mon TIPE</a></p>
+    </div>
+    <div class="card reveal">
+      <h3 data-i18n="k50"><i class="fa-solid fa-microchip"></i> Compétences clés</h3>
+      <div class="skill-bars">
+        <div class="skill"><span class="sk" data-i18n="k51">Modélisation thermique</span><div><i style="--w:88%"></i></div></div>
+        <div class="skill"><span class="sk" data-i18n="k52">Simulation numérique</span><div><i style="--w:82%"></i></div></div>
+        <div class="skill"><span class="sk" data-i18n="k53">Mécanique des fluides</span><div><i style="--w:78%"></i></div></div>
+        <div class="skill"><span class="sk" data-i18n="k54">Analyse critique &amp; rigueur</span><div><i style="--w:90%"></i></div></div>
+      </div>
+      <p class="note" data-i18n="k55">Niveaux indicatifs, à ajuster selon votre ressenti.</p>
+    </div>
+  </div>
+  </div>
+
+  <div id="eng-tipe" class="etab">
+    <div class="tab-intro">
+      <h3 data-i18n="k123">Projet TIPE · Tuiles thermiques</h3>
+      <p data-i18n="k124">TIPE (Travaux d'Initiative Personnelle Encadrés) réalisé en classes préparatoires : de la modélisation physique à la comparaison de matériaux de protection thermique.</p>
+    </div>
   <div class="card reveal" style="margin-bottom:1.5rem">
-    <span class="chip hot">TIPE · Classes préparatoires</span>
-    <h3 style="font-size:1.15rem;line-height:1.5">Tuiles thermiques : comment le matériau conditionne la diffusion de la chaleur et l'endommagement en rentrée atmosphérique</h3>
+    <span class="chip hot" data-i18n="k19">TIPE · Classes préparatoires</span>
+    <h3 style="font-size:1.15rem;line-height:1.5" data-i18n="k20">Tuiles thermiques : comment le matériau conditionne la diffusion de la chaleur et l'endommagement en rentrée atmosphérique</h3>
     <div class="tipe" style="margin-top:1.4rem">
       <dl class="star">
-        <dt>Contexte</dt>
-        <dd>Avec Artemis, Ariane 6 et les lanceurs réutilisables comme Starship, la rentrée atmosphérique est l'étape la plus critique d'une mission : à plus de 25 000 km/h, le plasma atteint 1 500 à 2 000 °C. Question posée : dans quelle mesure le choix du matériau d'une tuile conditionne-t-il la diffusion de la chaleur et les dommages au fil des vols ?</dd>
-        <dt>Méthodes</dt>
-        <dd>Modélisation de l'atmosphère (ISA), de la trajectoire (méthode d'Euler), du flux au point d'arrêt (Sutton-Graves) et de la diffusion 1D dans la tuile par différences finies : équation de la chaleur, flux de Neumann en surface, rayonnement en T⁴, face interne adiabatique. Appui expérimental : méthode flash laser pour mesurer la diffusivité thermique.</dd>
-        <dt>Analyse</dt>
-        <dd>Loi d'érosion linéaire à seuil au-delà de 1 700 °C, étude du frittage et de la dévitrification qui dégradent l'isolation, et comparaison de quatre matériaux. Hypothèses discutées : propriétés constantes, pente constante, gravité constante.</dd>
-        <dt>Compétences</dt>
-        <dd>Modélisation physique, thermique, simulation numérique, esprit critique, vulgarisation scientifique.</dd>
+        <dt data-i18n="k21">Contexte</dt>
+        <dd data-i18n="k22">Avec Artemis, Ariane 6 et les lanceurs réutilisables comme Starship, la rentrée atmosphérique est l'étape la plus critique d'une mission : à plus de 25 000 km/h, le plasma atteint 1 500 à 2 000 °C. Question posée : dans quelle mesure le choix du matériau d'une tuile conditionne-t-il la diffusion de la chaleur et les dommages au fil des vols ?</dd>
+        <dt data-i18n="k23">Méthodes</dt>
+        <dd data-i18n="k24">Modélisation de l'atmosphère (ISA), de la trajectoire (méthode d'Euler), du flux au point d'arrêt (Sutton-Graves) et de la diffusion 1D dans la tuile par différences finies : équation de la chaleur, flux de Neumann en surface, rayonnement en T⁴, face interne adiabatique. Appui expérimental : méthode flash laser pour mesurer la diffusivité thermique.</dd>
+        <dt data-i18n="k25">Analyse</dt>
+        <dd data-i18n="k26">Loi d'érosion linéaire à seuil au-delà de 1 700 °C, étude du frittage et de la dévitrification qui dégradent l'isolation, et comparaison de quatre matériaux. Hypothèses discutées : propriétés constantes, pente constante, gravité constante.</dd>
+        <dt data-i18n="k27">Compétences</dt>
+        <dd data-i18n="k28">Modélisation physique, thermique, simulation numérique, esprit critique, vulgarisation scientifique.</dd>
       </dl>
       <div>
         <div class="stats">
@@ -243,65 +288,49 @@ footer .links a:hover{color:var(--cyan)}
   </div>
 
   <div class="card sim reveal">
-    <span class="chip">Démonstration interactive</span>
-    <h3><i class="fa-solid fa-fire-flame-curved"></i> Que ressent la face arrière de la tuile ?</h3>
-    <p style="color:#b9c8e6;font-size:.92rem">Une version simplifiée de mon modèle tourne ici, dans votre navigateur : diffusion 1D explicite, température de surface imposée pendant la rentrée, face interne adiabatique. Changez l'épaisseur et la température de pic pour comparer les matériaux.</p>
+    <span class="chip" data-i18n="k29">Démonstration interactive</span>
+    <h3 data-i18n="k30"><i class="fa-solid fa-fire-flame-curved"></i> Que ressent la face arrière de la tuile ?</h3>
+    <p style="color:#b9c8e6;font-size:.92rem" data-i18n="k31">Une version simplifiée de mon modèle tourne ici, dans votre navigateur : diffusion 1D explicite, température de surface imposée pendant la rentrée, face interne adiabatique. Changez l'épaisseur et la température de pic pour comparer les matériaux.</p>
     <canvas id="simCanvas" width="900" height="280" aria-label="Température de la face arrière de la tuile en fonction du temps"></canvas>
     <div class="ctrl">
-      <label>Épaisseur de tuile <output id="oThk">60 mm</output></label>
-      <label>Température de pic en surface <output id="oPeak">1900 K</output></label>
+      <label data-i18n="k32">Épaisseur de tuile <output id="oThk">60 mm</output></label>
+      <label data-i18n="k33">Température de pic en surface <output id="oPeak">1900 K</output></label>
       <input type="range" id="thk" min="10" max="80" value="60" step="1" aria-label="Épaisseur">
       <input type="range" id="peak" min="1200" max="2100" value="1900" step="10" aria-label="Température de pic">
     </div>
     <div class="legend" id="legend"></div>
     <div class="readout" id="readout"></div>
-    <p class="note">Démonstration pédagogique : propriétés constantes et valeurs indicatives de la littérature (conductivité, masse volumique, capacité thermique), sans érosion ni rayonnement. Elle illustre les tendances de mon étude mais ne remplace pas le modèle complet du TIPE. Ligne pointillée : limite de la structure, 500 °C.</p>
+    <p class="note" data-i18n="k34">Démonstration pédagogique : propriétés constantes et valeurs indicatives de la littérature (conductivité, masse volumique, capacité thermique), sans érosion ni rayonnement. Elle illustre les tendances de mon étude mais ne remplace pas le modèle complet du TIPE. Ligne pointillée : limite de la structure, 500 °C.</p>
   </div>
 
   <div class="mat">
-    <div class="card reveal"><span class="chip">Super-isolant</span><h4><span class="dot" style="background:#4de1ff"></span>Silice LI-900</h4><p>94 % d'air, λ ≈ 0,05 W/(m·K) : le meilleur isolant, mais fragile. Idéal sur les surfaces peu sollicitées.</p></div>
-    <div class="card reveal"><span class="chip">Compromis</span><h4><span class="dot" style="background:#3dff9a"></span>FRCI</h4><p>Silice renforcée de fibres : λ ≈ 0,10 W/(m·K), ρ ≈ 192 kg/m³. Bien plus résistant aux chocs et au cisaillement.</p></div>
-    <div class="card reveal"><span class="chip hot">Ablatif</span><h4><span class="dot" style="background:#ffc46b"></span>PICA-X</h4><p>Carbone et résine phénolique qui protège en s'ablatant : λ ≈ 0,30 W/(m·K), pensé pour les flux extrêmes.</p></div>
-    <div class="card reveal"><span class="chip hot">Réfractaire</span><h4><span class="dot" style="background:#ff7a3d"></span>RCC</h4><p>Carbone-carbone : λ ≈ 4 W/(m·K), n'isole pas mais tient plus de 1 600 °C. Réservé aux nez et bords d'attaque.</p></div>
+    <div class="card reveal"><span class="chip" data-i18n="k35">Super-isolant</span><h4 data-i18n="k36"><span class="dot" style="background:#4de1ff"></span>Silice LI-900</h4><p data-i18n="k37">94 % d'air, λ ≈ 0,05 W/(m·K) : le meilleur isolant, mais fragile. Idéal sur les surfaces peu sollicitées.</p></div>
+    <div class="card reveal"><span class="chip" data-i18n="k38">Compromis</span><h4 data-i18n="k39"><span class="dot" style="background:#3dff9a"></span>FRCI</h4><p data-i18n="k40">Silice renforcée de fibres : λ ≈ 0,10 W/(m·K), ρ ≈ 192 kg/m³. Bien plus résistant aux chocs et au cisaillement.</p></div>
+    <div class="card reveal"><span class="chip hot" data-i18n="k41">Ablatif</span><h4 data-i18n="k42"><span class="dot" style="background:#ffc46b"></span>PICA-X</h4><p data-i18n="k43">Carbone et résine phénolique qui protège en s'ablatant : λ ≈ 0,30 W/(m·K), pensé pour les flux extrêmes.</p></div>
+    <div class="card reveal"><span class="chip hot" data-i18n="k44">Réfractaire</span><h4 data-i18n="k45"><span class="dot" style="background:#ff7a3d"></span>RCC</h4><p data-i18n="k46">Carbone-carbone : λ ≈ 4 W/(m·K), n'isole pas mais tient plus de 1 600 °C. Réservé aux nez et bords d'attaque.</p></div>
   </div>
 
-  <div class="grid2" style="margin-top:1.5rem">
-    <div class="card reveal">
-      <h3><i class="fa-solid fa-graduation-cap"></i> Cycle ingénieur MFEE</h3>
-      <p>Mécanique des Fluides, Énergie et Environnement à l'ENSEEIHT : écoulements, transferts thermiques, énergétique et simulation numérique, les fondations d'un profil aéro/spatial.</p>
-      <p>Actuellement en 1<sup>re</sup> année : mon TIPE reste mon projet technique de référence en attendant les projets de l'ENSEEIHT.</p>
-    </div>
-    <div class="card reveal">
-      <h3><i class="fa-solid fa-microchip"></i> Compétences clés</h3>
-      <div class="skill-bars">
-        <div class="skill">Modélisation thermique<div><i style="--w:88%"></i></div></div>
-        <div class="skill">Simulation numérique<div><i style="--w:82%"></i></div></div>
-        <div class="skill">Mécanique des fluides<div><i style="--w:78%"></i></div></div>
-        <div class="skill">Analyse critique &amp; rigueur<div><i style="--w:90%"></i></div></div>
-      </div>
-      <p class="note">Niveaux indicatifs, à ajuster selon votre ressenti.</p>
-    </div>
   </div>
 </section>
 
 <!-- ================= 3. INTERNATIONAL MOBILITY ================= -->
 <section id="mobility">
   <div class="sec-head reveal">
-    <div class="sec-tag">02 · International Mobility</div>
-    <h2>Cap sur l'international</h2>
-    <p>Validation de la mobilité internationale obligatoire : 17 semaines requises pour le diplôme (S9).</p>
+    <div class="sec-tag" data-i18n="k56">02 · International Mobility</div>
+    <h2 data-i18n="k57">Cap sur l'international</h2>
+    <p data-i18n="k58">Validation de la mobilité internationale obligatoire : 17 semaines requises pour le diplôme (S9).</p>
   </div>
   <div class="grid2">
     <div class="card reveal">
-      <h3><i class="fa-solid fa-earth-europe"></i> Projet de mobilité</h3>
-      <p>Je prévois un <strong>job d'été en entreprise en fin d'année</strong>, en France ou à l'étranger, avec les <strong>États-Unis</strong> comme destination envisagée. Objectif : progresser en anglais, découvrir un environnement de travail différent et nourrir mon projet dans l'aéro/spatial.</p>
-      <p class="todo">Statut : recherche pas encore démarrée.</p>
+      <h3 data-i18n="k59"><i class="fa-solid fa-earth-europe"></i> Projet de mobilité</h3>
+      <p data-i18n="k60">Je prévois un <strong>job d'été en entreprise en fin d'année</strong>, en France ou à l'étranger, avec les <strong>États-Unis</strong> comme destination envisagée. Objectif : progresser en anglais, découvrir un environnement de travail différent et nourrir mon projet dans l'aéro/spatial.</p>
+      <p class="todo" data-i18n="k61">Statut : recherche pas encore démarrée.</p>
     </div>
     <div class="card reveal">
-      <h3><i class="fa-solid fa-language"></i> Langues</h3>
-      <p><strong>Anglais :</strong> B2 / C1.</p>
-      <p><strong>Allemand (LV2) :</strong> environ B1, en progression.</p>
-      <p class="todo">Certification (TOEIC / IELTS) : à compléter.</p>
+      <h3 data-i18n="k62"><i class="fa-solid fa-language"></i> Langues</h3>
+      <p data-i18n="k63"><strong>Anglais :</strong> B2 / C1.</p>
+      <p data-i18n="k64"><strong>Allemand (LV2) :</strong> environ B1, en progression.</p>
+      <p class="todo" data-i18n="k65">Certification (TOEIC / IELTS) : à compléter.</p>
     </div>
   </div>
 </section>
@@ -309,19 +338,19 @@ footer .links a:hover{color:var(--cyan)}
 <!-- ================= 4. SUSTAINABILITY ================= -->
 <section id="sustainability">
   <div class="sec-head reveal">
-    <div class="sec-tag">03 · Sustainability &amp; Civic</div>
-    <h2>Engagement &amp; impact</h2>
-    <p>Validation des 40 h d'engagement citoyen / développement durable requises au S9.</p>
+    <div class="sec-tag" data-i18n="k66">03 · Sustainability &amp; Civic</div>
+    <h2 data-i18n="k67">Engagement &amp; impact</h2>
+    <p data-i18n="k68">Validation des 40 h d'engagement citoyen / développement durable requises au S9.</p>
   </div>
   <div class="grid2">
     <div class="card reveal">
-      <h3><i class="fa-solid fa-hand-holding-heart"></i> Projet citoyen / associatif</h3>
-      <p class="todo">Description de l'action : à compléter.</p>
+      <h3 data-i18n="k69"><i class="fa-solid fa-hand-holding-heart"></i> Projet citoyen / associatif</h3>
+      <p class="todo" data-i18n="k70">Description de l'action : à compléter.</p>
     </div>
     <div class="card reveal">
-      <h3><i class="fa-solid fa-leaf"></i> Sensibilisation DD&amp;RS</h3>
-      <p>Un lien naturel avec mon intérêt pour la réutilisabilité des lanceurs, qui réduit le coût et l'impact de l'accès à l'espace.</p>
-      <p class="todo">Fresque du Climat et autres actions à l'N7 : à compléter si vous y participez.</p>
+      <h3 data-i18n="k71"><i class="fa-solid fa-leaf"></i> Sensibilisation DD&amp;RS</h3>
+      <p data-i18n="k72">Un lien naturel avec mon intérêt pour la réutilisabilité des lanceurs, qui réduit le coût et l'impact de l'accès à l'espace.</p>
+      <p class="todo" data-i18n="k73">Fresque du Climat et autres actions à l'N7 : à compléter si vous y participez.</p>
     </div>
   </div>
 </section>
@@ -329,23 +358,23 @@ footer .links a:hover{color:var(--cyan)}
 <!-- ================= 5. SPORT ================= -->
 <section id="sport">
   <div class="sec-head reveal">
-    <div class="sec-tag">04 · Sport &amp; Activities</div>
-    <h2>Discipline &amp; dépassement</h2>
-    <p>Compétences transversales (soft skills) développées par le sport et les passions.</p>
+    <div class="sec-tag" data-i18n="k74">04 · Sport &amp; Activities</div>
+    <h2 data-i18n="k75">Discipline &amp; dépassement</h2>
+    <p data-i18n="k76">Compétences transversales (soft skills) développées par le sport et les passions.</p>
   </div>
   <div class="grid3">
     <div class="card reveal">
-      <h3><i class="fa-solid fa-dumbbell"></i> Musculation</h3>
-      <p><strong>3 séances par semaine.</strong> Discipline, progression par paliers et constance dans l'effort.</p>
+      <h3 data-i18n="k77"><i class="fa-solid fa-dumbbell"></i> Musculation</h3>
+      <p data-i18n="k78"><strong>3 séances par semaine.</strong> Discipline, progression par paliers et constance dans l'effort.</p>
     </div>
     <div class="card reveal">
-      <h3><i class="fa-solid fa-horse"></i> Équitation de compétition</h3>
-      <p><strong>5 ans de pratique</strong> en CSO et dressage, <strong>Galop 5</strong>, encadré par un cavalier professionnel, avec une bonne progression et des compétitions.</p>
-      <p>J'y ai appris la rigueur et la gestion complète d'un animal : soins, préparation, relation de confiance. Une forme de travail d'équipe, avec un partenaire qui ne parle pas.</p>
+      <h3 data-i18n="k79"><i class="fa-solid fa-horse"></i> Équitation de compétition</h3>
+      <p data-i18n="k80"><strong>5 ans de pratique</strong> en CSO et dressage, <strong>Galop 5</strong>, encadré par un cavalier professionnel, avec une bonne progression et des compétitions.</p>
+      <p data-i18n="k81">J'y ai appris la rigueur et la gestion complète d'un animal : soins, préparation, relation de confiance. Une forme de travail d'équipe, avec un partenaire qui ne parle pas.</p>
     </div>
     <div class="card reveal">
-      <h3><i class="fa-solid fa-user-astronaut"></i> Centres d'intérêt</h3>
-      <p>Depuis plusieurs années, je suis avec passion le développement des fusées : Starship, New Shepard, Ariane 6. C'est ce qui a donné naissance à mon sujet de TIPE.</p>
+      <h3 data-i18n="k82"><i class="fa-solid fa-user-astronaut"></i> Centres d'intérêt</h3>
+      <p data-i18n="k83">Depuis plusieurs années, je suis avec passion le développement des fusées : Starship, New Shepard, Ariane 6. C'est ce qui a donné naissance à mon sujet de TIPE.</p>
     </div>
   </div>
 </section>
@@ -353,86 +382,87 @@ footer .links a:hover{color:var(--cyan)}
 <!-- ================= 6. CAREER ================= -->
 <section id="career">
   <div class="sec-head reveal">
-    <div class="sec-tag">05 · Career Development</div>
-    <h2>Projet professionnel</h2>
-    <p>Insertion professionnelle et livrables évalués du module Marketing / CAM L3.</p>
+    <div class="sec-tag" data-i18n="k84">05 · Career Development</div>
+    <h2 data-i18n="k85">Projet professionnel</h2>
+    <p data-i18n="k86">Insertion professionnelle et livrables évalués du module Marketing / CAM L3.</p>
   </div>
 
-  <div class="big-quote reveal">Concevoir des systèmes qui résistent aux environnements les plus hostiles, du plasma de rentrée au vide spatial.</div>
+  <div class="big-quote reveal" data-i18n="k87">Concevoir des systèmes qui résistent aux environnements les plus hostiles, du plasma de rentrée au vide spatial.</div>
 
   <div class="grid2" style="margin-bottom:1.5rem">
     <div class="card reveal">
-      <h3><i class="fa-solid fa-satellite"></i> Secteurs &amp; entreprises visés</h3>
-      <p>Mon intérêt : le développement des technologies, le progrès et surtout la <strong>propulsion</strong>.</p>
+      <h3 data-i18n="k88"><i class="fa-solid fa-satellite"></i> Secteurs &amp; entreprises visés</h3>
+      <p data-i18n="k89">Mon intérêt : le développement des technologies, le progrès et surtout la <strong>propulsion</strong>.</p>
       <p style="margin-top:1rem">
-        <span class="chip">SpaceX</span> <span class="chip">Airbus</span> <span class="chip">Thales</span>
-        <span class="chip">Safran</span> <span class="chip">ArianeGroup</span> <span class="chip">ESA</span>
+        <span class="chip" data-i18n="k90">SpaceX</span> <span class="chip" data-i18n="k91">Airbus</span> <span class="chip" data-i18n="k92">Thales</span>
+        <span class="chip" data-i18n="k93">Safran</span> <span class="chip" data-i18n="k94">ArianeGroup</span> <span class="chip" data-i18n="k95">ESA</span>
       </p>
     </div>
     <div class="card reveal">
-      <h3><i class="fa-solid fa-star"></i> Mes qualités</h3>
+      <h3 data-i18n="k96"><i class="fa-solid fa-star"></i> Mes qualités</h3>
       <ul>
-        <li><strong>Curieux :</strong> je suis l'actualité des lanceurs depuis des années.</li>
-        <li><strong>Patient :</strong> la rigueur de l'équitation et de la modélisation.</li>
-        <li><strong>À l'écoute :</strong> un point souvent relevé par mon entourage.</li>
+        <li data-i18n="k97"><strong>Curieux :</strong> je suis l'actualité des lanceurs depuis des années.</li>
+        <li data-i18n="k98"><strong>Patient :</strong> la rigueur de l'équitation et de la modélisation.</li>
+        <li data-i18n="k99"><strong>À l'écoute :</strong> un point souvent relevé par mon entourage.</li>
       </ul>
     </div>
   </div>
 
   <div class="grid2">
     <div class="card reveal">
-      <h3><i class="fa-solid fa-file-arrow-down"></i> CV &amp; LinkedIn</h3>
-      <p>Mes CV à jour et mon profil professionnel.</p>
+      <h3 data-i18n="k100"><i class="fa-solid fa-file-arrow-down"></i> CV &amp; LinkedIn</h3>
+      <p data-i18n="k101">Mes CV à jour et mon profil professionnel.</p>
       <p>
         <a class="btn plasma" href="#"><i class="fa-solid fa-download"></i> CV (FR)</a>
         <a class="btn plasma" href="#"><i class="fa-solid fa-download"></i> CV (EN)</a>
-        <a class="btn" href="https://linkedin.com" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+        <a class="btn" href="https://linkedin.com" target="_blank" rel="noopener" data-i18n="k102"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
       </p>
-      <p class="todo">Ajoutez vos PDF dans le dépôt et remplacez les « # » par leur nom, par exemple cv-fr.pdf.</p>
+      <p class="todo" data-i18n="k103">Ajoutez vos PDF dans le dépôt et remplacez les « # » par leur nom, par exemple cv-fr.pdf.</p>
     </div>
     <div class="card reveal">
-      <h3><i class="fa-solid fa-video"></i> Elevator Pitch (UVP)</h3>
-      <div class="video"><i class="fa-solid fa-circle-play"></i><span>Vidéo de 2 à 3 minutes en anglais<br><small>Structure : Present + Past + Future</small></span></div>
+      <h3 data-i18n="k104"><i class="fa-solid fa-video"></i> Elevator Pitch (UVP)</h3>
+      <div class="video"><i class="fa-solid fa-circle-play"></i><p data-i18n="k105">Vidéo de 2 à 3 minutes en anglais</p><small data-i18n="k106">Structure : Present + Past + Future</small></div>
     </div>
     <div class="card reveal">
-      <h3><i class="fa-solid fa-user-tie"></i> 3 Role Models analysés</h3>
-      <p class="todo">MyJobGlasses / Alumni N7</p>
+      <h3 data-i18n="k107"><i class="fa-solid fa-user-tie"></i> 3 Role Models analysés</h3>
+      <p class="todo" data-i18n="k108">MyJobGlasses / Alumni N7</p>
       <ul>
-        <li><strong>Modèle 1 :</strong> <span class="todo">[ingénieur / poste, analyse]</span></li>
-        <li><strong>Modèle 2 :</strong> <span class="todo">[ingénieur / poste, analyse]</span></li>
-        <li><strong>Modèle 3 :</strong> <span class="todo">[ingénieur / poste, analyse]</span></li>
+        <li data-i18n="k109"><strong>Modèle 1 :</strong> <span class="todo">[ingénieur / poste, analyse]</span></li>
+        <li data-i18n="k110"><strong>Modèle 2 :</strong> <span class="todo">[ingénieur / poste, analyse]</span></li>
+        <li data-i18n="k111"><strong>Modèle 3 :</strong> <span class="todo">[ingénieur / poste, analyse]</span></li>
       </ul>
     </div>
     <div class="card reveal">
-      <h3><i class="fa-solid fa-plane-departure"></i> 3 Projets de mobilité alignés</h3>
+      <h3 data-i18n="k112"><i class="fa-solid fa-plane-departure"></i> 3 Projets de mobilité alignés</h3>
       <ul>
-        <li><strong>Projet 1 :</strong> <span class="todo">[destination / entreprise / université]</span></li>
-        <li><strong>Projet 2 :</strong> <span class="todo">[destination / entreprise / université]</span></li>
-        <li><strong>Projet 3 :</strong> <span class="todo">[destination / entreprise / université]</span></li>
+        <li data-i18n="k113"><strong>Projet 1 :</strong> <span class="todo">[destination / entreprise / université]</span></li>
+        <li data-i18n="k114"><strong>Projet 2 :</strong> <span class="todo">[destination / entreprise / université]</span></li>
+        <li data-i18n="k115"><strong>Projet 3 :</strong> <span class="todo">[destination / entreprise / université]</span></li>
       </ul>
     </div>
   </div>
   <div class="card reveal" style="margin-top:1.5rem">
-    <h3><i class="fa-solid fa-briefcase"></i> Stages &amp; Projet d'Exploration Professionnelle (PEP)</h3>
-    <p>Historique des stages et suivis d'insertion : Stage S6, Stage S8, PEP.</p>
-    <p class="todo">À compléter au fil du parcours.</p>
+    <h3 data-i18n="k116"><i class="fa-solid fa-briefcase"></i> Stages &amp; Projet d'Exploration Professionnelle (PEP)</h3>
+    <p data-i18n="k117">Historique des stages et suivis d'insertion : Stage S6, Stage S8, PEP.</p>
+    <p class="todo" data-i18n="k118">À compléter au fil du parcours.</p>
   </div>
 </section>
 
 <footer>
   <div class="logo"><i>TF</i> THOMAS FOLTZER</div>
-  <p>E-Portfolio · Toulouse INP-ENSEEIHT · Département MFEE</p>
-  <p style="margin-top:.4rem"><small>Conforme à la structure recommandée par la direction des études de l'N7</small></p>
+  <p data-i18n="k119">E-Portfolio · Toulouse INP-ENSEEIHT · Département MFEE</p>
+  <p style="margin-top:.4rem"><small data-i18n="k120">Conforme à la structure recommandée par la direction des études de l'N7</small></p>
   <div class="links" style="margin-top:1.2rem">
     <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
     <a href="https://github.com/thomasfoltzer8745" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
   </div>
-  <p style="margin-top:1.2rem"><small>© 2026 Thomas Foltzer</small></p>
+  <p style="margin-top:1.2rem"><small data-i18n="k121">© 2026 Thomas Foltzer</small></p>
 </footer>
 
 <script>
 (function(){
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var lang = 'fr';
 
   /* ---------- STARFIELD ---------- */
   var cv = document.getElementById('stars'), cx = cv.getContext('2d'), W, H, stars = [], mx = 0, my = 0;
@@ -504,19 +534,22 @@ footer .links a:hover{color:var(--cyan)}
   });
 
   /* ---------- TYPEWRITER ---------- */
+  var ROLES = {en:['MFEE engineering student · ENSEEIHT','Aeronautics & space enthusiast','Thermal · Fluids · Numerical simulation','On the road to aero, space and mobility'],fr:null};
   var roles = ['Élève-ingénieur MFEE · ENSEEIHT','Passionné d\'aéronautique &amp; de spatial'.replace('&amp;','&'),'Thermique · Fluides · Simulation numérique','En route vers l\'aéro, le spatial et la mobilité'];
+  ROLES.fr = roles;
   var rEl = document.getElementById('role'), ri = 0, ci = 0, del = false;
   (function type(){
-    var w = roles[ri];
+    var w = ROLES[lang][ri % ROLES[lang].length];
     if(reduce){ rEl.textContent = w; return; }
     rEl.textContent = w.slice(0,ci);
     if(!del && ci < w.length){ ci++; setTimeout(type,55); }
     else if(!del){ del = true; setTimeout(type,1800); }
     else if(ci > 0){ ci--; setTimeout(type,28); }
-    else { del = false; ri = (ri+1)%roles.length; setTimeout(type,300); }
+    else { del = false; ri = (ri+1)%ROLES[lang].length; setTimeout(type,300); }
   })();
 
   /* ---------- THERMAL SIMULATOR ---------- */
+  var UI = {fr:{surf:'surface',lim:'limite structure 500 °C',over:'dépasse la limite',under:'sous la limite'},en:{surf:'surface',lim:'structural limit 500 °C',over:'exceeds the limit',under:'below the limit'}};
   var MATS = [
     {n:'LI-900', lam:.05, rho:144, cp:1000, c:'#4de1ff'},
     {n:'FRCI',   lam:.10, rho:192, cp:1000, c:'#3dff9a'},
@@ -547,7 +580,7 @@ footer .links a:hover{color:var(--cyan)}
   }
   function draw(){
     var L = thk.value/1000, peak = +pk.value;
-    oThk.textContent = thk.value+' mm'; oPeak.textContent = peak+' K';
+    document.getElementById('oThk').textContent = thk.value+' mm'; document.getElementById('oPeak').textContent = peak+' K';
     var res = MATS.map(function(m){ return simulate(m,L,peak); });
     var d = Math.min(devicePixelRatio||1,2), w = sc.clientWidth, h = sc.clientHeight;
     sc.width = w*d; sc.height = h*d; sx.setTransform(d,0,0,d,0,0);
@@ -561,10 +594,10 @@ footer .links a:hover{color:var(--cyan)}
     // surface profile
     sx.strokeStyle = 'rgba(255,255,255,.25)'; sx.setLineDash([2,4]); sx.beginPath();
     for(var i=0;i<=150;i++){ var y = Y(surf(i/150*TOT,peak)); i?sx.lineTo(X(i),y):sx.moveTo(X(i),y); }
-    sx.stroke(); sx.fillStyle = 'rgba(255,255,255,.4)'; sx.fillText('surface',w-pad.r-46,Y(surf(TOT,peak))-6);
+    sx.stroke(); sx.fillStyle = 'rgba(255,255,255,.4)'; sx.fillText(UI[lang].surf,w-pad.r-46,Y(surf(TOT,peak))-6);
     // limit
     sx.strokeStyle = 'rgba(255,90,90,.8)'; sx.setLineDash([6,5]); sx.beginPath(); sx.moveTo(pad.l,Y(LIM)); sx.lineTo(w-pad.r,Y(LIM)); sx.stroke();
-    sx.fillStyle = '#ff7a7a'; sx.fillText('limite structure 500 °C',pad.l+6,Y(LIM)-5);
+    sx.fillStyle = '#ff7a7a'; sx.fillText(UI[lang].lim,pad.l+6,Y(LIM)-5);
     sx.setLineDash([]);
     res.forEach(function(r,mi){
       if(!on[mi]) return;
@@ -573,7 +606,7 @@ footer .links a:hover{color:var(--cyan)}
     });
     readout.innerHTML = MATS.map(function(m,mi){
       var mx_ = Math.max.apply(null,res[mi]), over = mx_ > LIM;
-      return '<div style="'+(on[mi]?'':'opacity:.35')+'">'+m.n+'<b style="color:'+(over?'#ff7a7a':'#3dff9a')+'">'+Math.round(mx_-273.15)+' °C</b>'+(over?'dépasse la limite':'sous la limite')+'</div>';
+      return '<div style="'+(on[mi]?'':'opacity:.35')+'">'+m.n+'<b style="color:'+(over?'#ff7a7a':'#3dff9a')+'">'+Math.round(mx_-273.15)+' °C</b>'+(over?UI[lang].over:UI[lang].under)+'</div>';
     }).join('');
   }
   legend.innerHTML = MATS.map(function(m,i){ return '<button data-i="'+i+'" aria-pressed="true"><i style="background:'+m.c+';box-shadow:0 0 8px '+m.c+'"></i>'+m.n+'</button>'; }).join('');
@@ -583,7 +616,48 @@ footer .links a:hover{color:var(--cyan)}
   });
   thk.addEventListener('input', draw); pk.addEventListener('input', draw);
   addEventListener('resize', draw);
-  draw();
+
+  /* ---------- LANGUAGE (FR / EN) ---------- */
+  var EN = ["Welcome", "Engineering Course", "International Mobility", "Sustainability &amp; Civic", "Sport &amp; Activities", "Career Development", "<b></b> E-Portfolio · Toulouse INP-ENSEEIHT · MFEE", "First-year engineering student in the Fluid Mechanics, Energy and Environment (MFEE) department, I am aiming for aeronautics, space and the mobility of the future. Curious about propulsion technologies and reusable launch vehicles, I want to understand and design systems that survive extreme environments.", "<i class=\"fa-solid fa-rocket\"></i> My TIPE project", "<i class=\"fa-solid fa-file-lines\"></i> CV &amp; contact", "<i class=\"fa-brands fa-linkedin\"></i> LinkedIn", "Level", "Focus", "Languages", "TIPE · erosion threshold", "Scroll", "01 · Engineering Course", "Course &amp; engineering projects", "Theoretical coursework, academic projects and technical skills developed at Toulouse INP-ENSEEIHT. My TIPE from preparatory classes has its own tab.", "TIPE · Preparatory classes (CPGE)", "Thermal tiles: how the choice of material governs heat diffusion and damage during atmospheric re-entry", "Context", "With Artemis, Ariane 6 and reusable launchers such as Starship, atmospheric re-entry is the most critical phase of a mission: at over 25,000 km/h, the plasma reaches 1,500 to 2,000 °C. Research question: to what extent does the choice of a tile's material govern heat diffusion and damage over successive flights?", "Methods", "Modelling of the atmosphere (ISA), of the trajectory (Euler method), of the stagnation-point heat flux (Sutton-Graves) and of 1D diffusion in the tile using finite differences: heat equation, Neumann flux at the surface, T⁴ radiation, adiabatic inner face. Experimental support: the laser flash method to measure thermal diffusivity.", "Analysis", "Linear threshold erosion law above 1,700 °C, a study of sintering and devitrification, which degrade insulation, and a comparison of four materials. Assumptions discussed: constant properties, constant flight-path angle, constant gravity.", "Skills", "Physical modelling, thermal analysis, numerical simulation, critical thinking, science communication.", "of thickness eroded at 2,040 K over 50 s", "flights before the structure reaches its critical limit (model)", "tile thickness on Starship: safety margin validated", "materials compared: LI-900, FRCI, PICA-X, RCC", "Interactive demonstration", "<i class=\"fa-solid fa-fire-flame-curved\"></i> How hot does the back face of the tile get?", "A simplified version of my model runs right here in your browser: explicit 1D diffusion, surface temperature imposed during re-entry, adiabatic inner face. Change the thickness and the peak temperature to compare the materials.", "Tile thickness <output id=\"oThk\">60 mm</output>", "Peak surface temperature <output id=\"oPeak\">1900 K</output>", "Educational demonstration: constant properties and indicative literature values (conductivity, density, specific heat), without erosion or radiation. It illustrates the trends of my study but does not replace the full TIPE model. Dotted line: structural limit, 500 °C.", "Super-insulator", "94% air, λ ≈ 0.05 W/(m·K): the best insulator, but fragile. Ideal on lightly stressed surfaces.", "Trade-off", "Fibre-reinforced silica: λ ≈ 0.10 W/(m·K), ρ ≈ 192 kg/m³. Far more resistant to impacts and shear.", "Ablative", "Carbon and phenolic resin that protects by ablating: λ ≈ 0.30 W/(m·K), designed for extreme heat fluxes.", "Refractory", "Carbon-carbon: λ ≈ 4 W/(m·K), does not insulate but withstands more than 1,600 °C. Reserved for nose caps and leading edges.", "<i class=\"fa-solid fa-graduation-cap\"></i> MFEE engineering programme", "Fluid Mechanics, Energy and Environment at ENSEEIHT: flows, heat transfer, energy engineering and numerical simulation, the foundations of an aero/space profile.", "Currently in my first year: my TIPE remains my reference technical project until the ENSEEIHT projects begin.", "<i class=\"fa-solid fa-microchip\"></i> Key skills", "Thermal modelling", "Numerical simulation", "Fluid mechanics", "Critical analysis &amp; rigour", "Indicative levels, to be adjusted.", "02 · International Mobility", "Going international", "Validation of the compulsory international mobility: 17 weeks required for the degree (S9).", "<i class=\"fa-solid fa-earth-europe\"></i> Mobility plan", "I plan a <strong>summer job in a company at the end of the year</strong>, in France or abroad, with the <strong>United States</strong> as a possible destination. Goal: improve my English, experience a different working environment and fuel my aero/space plans.", "Status: search not yet started.", "<i class=\"fa-solid fa-language\"></i> Languages", "<strong>English:</strong> B2 / C1.", "<strong>German (second foreign language):</strong> around B1, improving.", "Certification (TOEIC / IELTS): to be added.", "03 · Sustainability &amp; Civic", "Civic involvement &amp; impact", "Validation of the 40 hours of civic involvement / sustainable development required in S9.", "<i class=\"fa-solid fa-hand-holding-heart\"></i> Civic / community project", "Description of the action: to be added.", "<i class=\"fa-solid fa-leaf\"></i> Sustainability &amp; CSR awareness", "A natural link with my interest in launcher reusability, which reduces the cost and impact of access to space.", "Climate Fresk and other actions at N7: to be added if you take part.", "04 · Sport &amp; Activities", "Discipline &amp; pushing limits", "Transferable skills (soft skills) developed through sport and personal passions.", "<i class=\"fa-solid fa-dumbbell\"></i> Weight training", "<strong>3 sessions a week.</strong> Discipline, step-by-step progress and consistency of effort.", "<i class=\"fa-solid fa-horse\"></i> Competitive horse riding", "<strong>5 years of riding</strong> in show jumping (CSO) and dressage, <strong>Galop 5</strong> (French riding proficiency level), coached by a professional rider, with good progress and competitions.", "I learned rigour and the complete care of an animal: grooming, preparation, building trust. A form of teamwork, with a partner who cannot speak.", "<i class=\"fa-solid fa-user-astronaut\"></i> Interests", "For several years, I have been passionately following the development of rockets: Starship, New Shepard, Ariane 6. This is what gave rise to my TIPE topic.", "05 · Career Development", "Career plan", "Entry into the job market and graded deliverables of the Marketing / CAM L3 module.", "Designing systems that withstand the most hostile environments, from re-entry plasma to the vacuum of space.", "<i class=\"fa-solid fa-satellite\"></i> Target sectors &amp; companies", "My interest: technology development, progress and above all <strong>propulsion</strong>.", "SpaceX", "Airbus", "Thales", "Safran", "ArianeGroup", "ESA", "<i class=\"fa-solid fa-star\"></i> My qualities", "<strong>Curious:</strong> I have followed launcher news for years.", "<strong>Patient:</strong> the rigour of riding and of modelling.", "<strong>A good listener:</strong> something those around me often point out.", "<i class=\"fa-solid fa-file-arrow-down\"></i> CV &amp; LinkedIn", "My up-to-date CVs and professional profile.", "<i class=\"fa-brands fa-linkedin\"></i> LinkedIn", "Add your PDFs to the repository and replace the “#” with their file name, for example cv-fr.pdf.", "<i class=\"fa-solid fa-video\"></i> Elevator Pitch (UVP)", "2 to 3 minute video in English", "Structure: Present + Past + Future", "<i class=\"fa-solid fa-user-tie\"></i> 3 Role Models analysed", "MyJobGlasses / N7 Alumni", "<strong>Model 1:</strong> <span class=\"todo\">[engineer / position, analysis]</span>", "<strong>Model 2:</strong> <span class=\"todo\">[engineer / position, analysis]</span>", "<strong>Model 3:</strong> <span class=\"todo\">[engineer / position, analysis]</span>", "<i class=\"fa-solid fa-plane-departure\"></i> 3 Aligned mobility projects", "<strong>Project 1:</strong> <span class=\"todo\">[destination / company / university]</span>", "<strong>Project 2:</strong> <span class=\"todo\">[destination / company / university]</span>", "<strong>Project 3:</strong> <span class=\"todo\">[destination / company / university]</span>", "<i class=\"fa-solid fa-briefcase\"></i> Internships &amp; Professional Exploration Project (PEP)", "History of internships and career follow-ups: S6 internship, S8 internship, PEP.", "To be completed as my studies progress.", "E-Portfolio · Toulouse INP-ENSEEIHT · MFEE Department", "In line with the structure recommended by the N7 academic affairs office", "© 2026 Thomas Foltzer", "TIPE", "TIPE project · Thermal tiles", "TIPE (Travaux d'Initiative Personnelle Encadrés, a supervised personal research project) carried out in preparatory classes: from physical modelling to comparing thermal protection materials.", "<i class=\"fa-solid fa-rocket\"></i> See my TIPE", "MFEE programme", "TIPE"];
+  var els = [].slice.call(document.querySelectorAll('[data-i18n]'));
+  var FR = els.map(function(e){ return e.innerHTML; });
+  var META = {
+    fr:{title:'Thomas Foltzer | E-Portfolio Aérospatial – ENSEEIHT',desc:'E-Portfolio de Thomas Foltzer, élève-ingénieur MFEE à Toulouse INP-ENSEEIHT : aéro, spatial, thermique et modélisation numérique.',lbl:'Menu',sim:'Température de la face arrière de la tuile en fonction du temps'},
+    en:{title:'Thomas Foltzer | Aerospace E-Portfolio – ENSEEIHT',desc:'E-Portfolio of Thomas Foltzer, MFEE engineering student at Toulouse INP-ENSEEIHT: aeronautics, space, thermal analysis and numerical modelling.',lbl:'Menu',sim:'Back-face temperature of the tile over time'}
+  };
+  var langBtn = document.getElementById('langBtn');
+  function setLang(l, save){
+    lang = l;
+    els.forEach(function(e,i){ e.innerHTML = (l==='en') ? EN[+e.dataset.i18n.slice(1)] : FR[i]; });
+    document.documentElement.lang = l;
+    document.title = META[l].title;
+    var md = document.querySelector('meta[name=description]'); if(md) md.setAttribute('content', META[l].desc);
+    document.getElementById('simCanvas').setAttribute('aria-label', META[l].sim);
+    langBtn.querySelectorAll('span').forEach(function(s){ s.classList.toggle('on', s.dataset.l===l); });
+    langBtn.setAttribute('aria-label', l==='en' ? 'Switch language (currently English)' : 'Changer de langue (actuellement français)');
+    ri = 0; ci = 0; del = false;
+    if(save){ try{ localStorage.setItem('lang', l); }catch(e){} }
+    draw();
+  }
+  langBtn.addEventListener('click', function(){ setLang(lang==='fr' ? 'en' : 'fr', true); });
+  var start = 'fr';
+  try{ start = localStorage.getItem('lang') || ((navigator.language||'fr').toLowerCase().indexOf('fr')===0 ? 'fr' : 'en'); }catch(e){}
+  setLang(start, false);
+
+  /* ---------- ENGINEERING SUB-TABS ---------- */
+  var etabs = [].slice.call(document.querySelectorAll('.etab'));
+  function showEtab(id){
+    etabs.forEach(function(t){ t.classList.toggle('active', t.id===id); });
+    document.querySelectorAll('.subnav button[data-etab]').forEach(function(b){ b.classList.toggle('active', b.dataset.etab===id); });
+    draw();
+  }
+  document.querySelectorAll('[data-etab]').forEach(function(b){
+    b.addEventListener('click', function(e){
+      if(b.tagName==='A'){ e.preventDefault(); document.getElementById('engineering').scrollIntoView(); }
+      showEtab(b.dataset.etab);
+    });
+  });
+  if(location.hash==='#tipe'){ showEtab('eng-tipe'); document.getElementById('engineering').scrollIntoView(); }
 })();
 </script>
 </body>
